@@ -9,21 +9,44 @@
 /* Begin PBXBuildFile section */
 		BCD9CB362C117B7F00FC0C57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB352C117B7F00FC0C57 /* AppDelegate.swift */; };
 		BCD9CB382C117B7F00FC0C57 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB372C117B7F00FC0C57 /* SceneDelegate.swift */; };
-		BCD9CB3A2C117B7F00FC0C57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB392C117B7F00FC0C57 /* ViewController.swift */; };
-		BCD9CB3D2C117B7F00FC0C57 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = BCD9CB3C2C117B7F00FC0C57 /* Base */; };
 		BCD9CB3F2C117B8000FC0C57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD9CB3E2C117B8000FC0C57 /* Assets.xcassets */; };
 		BCD9CB422C117B8000FC0C57 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = BCD9CB412C117B8000FC0C57 /* Base */; };
+		BCD9CB4A2C117ECD00FC0C57 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BCD9CB492C117ECD00FC0C57 /* .gitignore */; };
+		BCD9CB4D2C11831200FC0C57 /* ReusableIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB4C2C11831200FC0C57 /* ReusableIdentifier.swift */; };
+		BCD9CB4F2C11834400FC0C57 /* ViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB4E2C11834400FC0C57 /* ViewTransition.swift */; };
+		BCD9CB512C11838600FC0C57 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB502C11838600FC0C57 /* APIKey.swift */; };
+		BCD9CB532C1183A800FC0C57 /* CodeBaseUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB522C1183A800FC0C57 /* CodeBaseUI.swift */; };
+		BCD9CB5C2C11A2A900FC0C57 /* SelectViewTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB5B2C11A2A900FC0C57 /* SelectViewTable.swift */; };
+		BCD9CB5F2C11A37C00FC0C57 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BCD9CB5E2C11A37C00FC0C57 /* SnapKit */; };
+		BCD9CB612C11A48300FC0C57 /* Damagochi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB602C11A48300FC0C57 /* Damagochi.swift */; };
+		BCD9CB632C11A63500FC0C57 /* UIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB622C11A63500FC0C57 /* UIResource.swift */; };
+		BCD9CB652C11A82600FC0C57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB642C11A82600FC0C57 /* ViewController.swift */; };
+		BCD9CB672C11AACC00FC0C57 /* SelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB662C11AACC00FC0C57 /* SelectTableViewCell.swift */; };
+		BCD9CB6A2C11ADA000FC0C57 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BCD9CB692C11ADA000FC0C57 /* Kingfisher */; };
+		BCD9CB6C2C11BF0000FC0C57 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB6B2C11BF0000FC0C57 /* SelectViewController.swift */; };
+		BCD9CB6E2C11C2D300FC0C57 /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB6D2C11C2D300FC0C57 /* SelectCollectionViewCell.swift */; };
+		BCD9CB712C11C36D00FC0C57 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BCD9CB702C11C36D00FC0C57 /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BCD9CB322C117B7F00FC0C57 /* Damagochi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Damagochi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD9CB352C117B7F00FC0C57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCD9CB372C117B7F00FC0C57 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BCD9CB392C117B7F00FC0C57 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BCD9CB3C2C117B7F00FC0C57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BCD9CB3E2C117B8000FC0C57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCD9CB412C117B8000FC0C57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCD9CB432C117B8000FC0C57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCD9CB492C117ECD00FC0C57 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		BCD9CB4C2C11831200FC0C57 /* ReusableIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableIdentifier.swift; sourceTree = "<group>"; };
+		BCD9CB4E2C11834400FC0C57 /* ViewTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransition.swift; sourceTree = "<group>"; };
+		BCD9CB502C11838600FC0C57 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		BCD9CB522C1183A800FC0C57 /* CodeBaseUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseUI.swift; sourceTree = "<group>"; };
+		BCD9CB5B2C11A2A900FC0C57 /* SelectViewTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewTable.swift; sourceTree = "<group>"; };
+		BCD9CB602C11A48300FC0C57 /* Damagochi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Damagochi.swift; sourceTree = "<group>"; };
+		BCD9CB622C11A63500FC0C57 /* UIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResource.swift; sourceTree = "<group>"; };
+		BCD9CB642C11A82600FC0C57 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BCD9CB662C11AACC00FC0C57 /* SelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableViewCell.swift; sourceTree = "<group>"; };
+		BCD9CB6B2C11BF0000FC0C57 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
+		BCD9CB6D2C11C2D300FC0C57 /* SelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +54,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD9CB6A2C11ADA000FC0C57 /* Kingfisher in Frameworks */,
+				BCD9CB712C11C36D00FC0C57 /* Then in Frameworks */,
+				BCD9CB5F2C11A37C00FC0C57 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +66,7 @@
 		BCD9CB292C117B7F00FC0C57 = {
 			isa = PBXGroup;
 			children = (
+				BCD9CB492C117ECD00FC0C57 /* .gitignore */,
 				BCD9CB342C117B7F00FC0C57 /* Damagochi */,
 				BCD9CB332C117B7F00FC0C57 /* Products */,
 			);
@@ -56,15 +83,80 @@
 		BCD9CB342C117B7F00FC0C57 /* Damagochi */ = {
 			isa = PBXGroup;
 			children = (
+				BCD9CB4B2C1182F000FC0C57 /* Common */,
+				BCD9CB5A2C11865700FC0C57 /* Resource */,
+				BCD9CB552C11842300FC0C57 /* View */,
 				BCD9CB352C117B7F00FC0C57 /* AppDelegate.swift */,
 				BCD9CB372C117B7F00FC0C57 /* SceneDelegate.swift */,
-				BCD9CB392C117B7F00FC0C57 /* ViewController.swift */,
-				BCD9CB3B2C117B7F00FC0C57 /* Main.storyboard */,
 				BCD9CB3E2C117B8000FC0C57 /* Assets.xcassets */,
 				BCD9CB402C117B8000FC0C57 /* LaunchScreen.storyboard */,
 				BCD9CB432C117B8000FC0C57 /* Info.plist */,
+				BCD9CB642C11A82600FC0C57 /* ViewController.swift */,
 			);
 			path = Damagochi;
+			sourceTree = "<group>";
+		};
+		BCD9CB4B2C1182F000FC0C57 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BCD9CB522C1183A800FC0C57 /* CodeBaseUI.swift */,
+				BCD9CB4C2C11831200FC0C57 /* ReusableIdentifier.swift */,
+				BCD9CB4E2C11834400FC0C57 /* ViewTransition.swift */,
+				BCD9CB502C11838600FC0C57 /* APIKey.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		BCD9CB552C11842300FC0C57 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BCD9CB592C11851F00FC0C57 /* Extension */,
+				BCD9CB582C1184ED00FC0C57 /* MainView */,
+				BCD9CB572C1184DD00FC0C57 /* SettingView */,
+				BCD9CB562C11843B00FC0C57 /* SelectView */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		BCD9CB562C11843B00FC0C57 /* SelectView */ = {
+			isa = PBXGroup;
+			children = (
+				BCD9CB5B2C11A2A900FC0C57 /* SelectViewTable.swift */,
+				BCD9CB662C11AACC00FC0C57 /* SelectTableViewCell.swift */,
+				BCD9CB6B2C11BF0000FC0C57 /* SelectViewController.swift */,
+				BCD9CB6D2C11C2D300FC0C57 /* SelectCollectionViewCell.swift */,
+			);
+			name = SelectView;
+			sourceTree = "<group>";
+		};
+		BCD9CB572C1184DD00FC0C57 /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SettingView;
+			sourceTree = "<group>";
+		};
+		BCD9CB582C1184ED00FC0C57 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MainView;
+			sourceTree = "<group>";
+		};
+		BCD9CB592C11851F00FC0C57 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		BCD9CB5A2C11865700FC0C57 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				BCD9CB602C11A48300FC0C57 /* Damagochi.swift */,
+				BCD9CB622C11A63500FC0C57 /* UIResource.swift */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +175,11 @@
 			dependencies = (
 			);
 			name = Damagochi;
+			packageProductDependencies = (
+				BCD9CB5E2C11A37C00FC0C57 /* SnapKit */,
+				BCD9CB692C11ADA000FC0C57 /* Kingfisher */,
+				BCD9CB702C11C36D00FC0C57 /* Then */,
+			);
 			productName = Damagochi;
 			productReference = BCD9CB322C117B7F00FC0C57 /* Damagochi.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +208,11 @@
 				Base,
 			);
 			mainGroup = BCD9CB292C117B7F00FC0C57;
+			packageReferences = (
+				BCD9CB5D2C11A37C00FC0C57 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				BCD9CB682C11ADA000FC0C57 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				BCD9CB6F2C11C36D00FC0C57 /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = BCD9CB332C117B7F00FC0C57 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,8 +228,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD9CB3F2C117B8000FC0C57 /* Assets.xcassets in Resources */,
+				BCD9CB4A2C117ECD00FC0C57 /* .gitignore in Resources */,
 				BCD9CB422C117B8000FC0C57 /* Base in Resources */,
-				BCD9CB3D2C117B7F00FC0C57 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +240,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCD9CB3A2C117B7F00FC0C57 /* ViewController.swift in Sources */,
+				BCD9CB652C11A82600FC0C57 /* ViewController.swift in Sources */,
+				BCD9CB6E2C11C2D300FC0C57 /* SelectCollectionViewCell.swift in Sources */,
+				BCD9CB4D2C11831200FC0C57 /* ReusableIdentifier.swift in Sources */,
 				BCD9CB362C117B7F00FC0C57 /* AppDelegate.swift in Sources */,
 				BCD9CB382C117B7F00FC0C57 /* SceneDelegate.swift in Sources */,
+				BCD9CB6C2C11BF0000FC0C57 /* SelectViewController.swift in Sources */,
+				BCD9CB5C2C11A2A900FC0C57 /* SelectViewTable.swift in Sources */,
+				BCD9CB512C11838600FC0C57 /* APIKey.swift in Sources */,
+				BCD9CB532C1183A800FC0C57 /* CodeBaseUI.swift in Sources */,
+				BCD9CB672C11AACC00FC0C57 /* SelectTableViewCell.swift in Sources */,
+				BCD9CB4F2C11834400FC0C57 /* ViewTransition.swift in Sources */,
+				BCD9CB612C11A48300FC0C57 /* Damagochi.swift in Sources */,
+				BCD9CB632C11A63500FC0C57 /* UIResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BCD9CB3B2C117B7F00FC0C57 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BCD9CB3C2C117B7F00FC0C57 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BCD9CB402C117B8000FC0C57 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -296,9 +400,9 @@
 				INFOPLIST_FILE = Damagochi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,9 +410,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tunastorm.Damagochi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,9 +431,9 @@
 				INFOPLIST_FILE = Damagochi/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -333,9 +441,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tunastorm.Damagochi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -361,6 +473,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BCD9CB5D2C11A37C00FC0C57 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		BCD9CB682C11ADA000FC0C57 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+		BCD9CB6F2C11C36D00FC0C57 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BCD9CB5E2C11A37C00FC0C57 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BCD9CB5D2C11A37C00FC0C57 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		BCD9CB692C11ADA000FC0C57 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BCD9CB682C11ADA000FC0C57 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		BCD9CB702C11C36D00FC0C57 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BCD9CB6F2C11C36D00FC0C57 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BCD9CB2A2C117B7F00FC0C57 /* Project object */;
 }
