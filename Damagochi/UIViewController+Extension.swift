@@ -11,12 +11,12 @@ extension UIViewController {
     
     func setDefaultUI() {
         view.backgroundColor = UIValue.color.background
-        setNavigationTitleColor(UIValue.color.border)
+        setNavigationTitleColor(UIValue.color.font)
     }
     
     func setModalBackgroundUI() {
         view.backgroundColor = .black
-        view.layer.opacity = ViewUIValue.selectedItemView.viewOpactiy
+        view.layer.opacity = UIValue.opacity.half
     }
     
     func setNavigationTitleColor(_ color: UIColor) {

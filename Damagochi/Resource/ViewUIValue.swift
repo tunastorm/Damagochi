@@ -28,7 +28,6 @@ struct SelectViewValue {
     let widthPadding: CGFloat
     let heightPadding: CGFloat
     
-    
     init() {
         self.widthPadding = sectionInsets.left * (itemsPerRow + 1)
         self.heightPadding = sectionInsets.top * (itemsPerColumn + 1)
@@ -36,17 +35,13 @@ struct SelectViewValue {
 }
 
 struct SelectViewCellValue {
-    let coverViewOpactity = Float(0.5)
     let coverViewCornerRadius = CGFloat(50)
     let labelViewBorderWidth = CGFloat(1)
     let labelViewCornerRadius = CGFloat(5)
-    let labelDefaultText = "준비중이에요"
 }
 
 struct SelectedItemViewVlaue {
-    let viewOpactiy = Float(0.5)
     let modalViewCornerRadious = CGFloat(20)
-    let modalViewOpacity = Float(1.5)
     let coverViewCornerRadious = CGFloat(57)
     let cancleButtonTitle = "취소"
     let startButtonTitle = "시작하기"
@@ -54,6 +49,7 @@ struct SelectedItemViewVlaue {
 
 struct MainViewValue {
     let navigationTitle =  "님의 " + UIValue.damagochi 
+    let coverViewCornerRadious = CGFloat(110)
 }
 
 

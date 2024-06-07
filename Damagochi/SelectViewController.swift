@@ -118,9 +118,6 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
             
             let cellWidth = (width - widthPadding) / itemsPerRow
             let cellHeight = (height - heightPadding) / itemsPerColumn
-        
-            print("cellWidth: \(cellWidth)")
-            print("cellHeight: \(cellHeight)")
             
             return CGSize(width: cellWidth, height: cellHeight)
     }

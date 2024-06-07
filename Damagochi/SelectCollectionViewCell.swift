@@ -15,14 +15,14 @@ class SelectCollectionViewCell: UICollectionViewCell {
     // 뷰 객체 생성 및 초기화
     var img = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.image = UIImage(named: "1-1")
+        $0.image = UIValue.image.defaultDamagochi
         $0.contentMode = .scaleToFill
     }
     
     var coverView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = .black
-        $0.layer.opacity = ViewUIValue.selectViewCell.coverViewOpactity
+        $0.layer.opacity = UIValue.opacity.half
         $0.layer.cornerRadius = ViewUIValue.selectViewCell.coverViewCornerRadius
         $0.layer.masksToBounds = true
     }
@@ -31,7 +31,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = UIValue.color.background
         $0.layer.borderWidth = ViewUIValue.selectViewCell.labelViewBorderWidth
-        $0.layer.borderColor = UIValue.color.border.cgColor
+        $0.layer.borderColor = UIValue.color.border
         $0.layer.cornerRadius = ViewUIValue.selectViewCell.labelViewCornerRadius
         $0.layer.masksToBounds = true
     }
@@ -42,7 +42,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
         let fontSize = CGFloat(UIValue.fontSize.thin)
         $0.font = .boldSystemFont(ofSize: fontSize)
         $0.textColor = UIValue.color.font
-        $0.text = ViewUIValue.selectViewCell.labelDefaultText
+        $0.text = UIValue.defaultMessage
     }
     
     override init(frame: CGRect) {

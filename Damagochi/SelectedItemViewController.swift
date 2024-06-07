@@ -34,14 +34,14 @@ class SelectedItemViewController: UIViewController {
     
     var img = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.image = UIImage(named: "1-1")
+        $0.image = UIValue.image.defaultDamagochi
         $0.contentMode = .scaleToFill
     }
     
     var coverView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = .black
-        $0.layer.opacity = ViewUIValue.selectViewCell.coverViewOpactity
+        $0.layer.opacity = UIValue.opacity.half
         $0.layer.cornerRadius = ViewUIValue.selectedItemView.coverViewCornerRadious
         $0.layer.masksToBounds = true
     }
@@ -50,7 +50,7 @@ class SelectedItemViewController: UIViewController {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = UIValue.color.background
         $0.layer.borderWidth = ViewUIValue.selectViewCell.labelViewBorderWidth
-        $0.layer.borderColor = UIValue.color.border.cgColor
+        $0.layer.borderColor = UIValue.color.border
         $0.layer.cornerRadius = ViewUIValue.selectViewCell.labelViewCornerRadius
         $0.layer.masksToBounds = true
     }
@@ -61,35 +61,35 @@ class SelectedItemViewController: UIViewController {
         let fontSize = CGFloat(UIValue.fontSize.thin)
         $0.font = .boldSystemFont(ofSize: fontSize)
         $0.textColor = UIValue.color.font
-        $0.text = ViewUIValue.selectViewCell.labelDefaultText
+        $0.text = UIValue.defaultMessage
     }
     
     let lineView1: UIView = {
         let view = UIView()
-        view.backgroundColor = UIValue.color.border
+        view.backgroundColor = UIValue.color.font
         return view
     }()
     
     let lineView2: UIView = {
         let view = UIView()
-        view.backgroundColor = UIValue.color.border
+        view.backgroundColor = UIValue.color.font
         return view
     }()
     
     let descLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIValue.color.border
+        label.textColor = UIValue.color.font
         label.textAlignment = .center
         label.font = .systemFont(ofSize: UIValue.fontSize.thin)
         label.numberOfLines = 0
-        label.text = "준비중입니다"
+        label.text = UIValue.defaultMessage
         return label
     }()
     
     let cancleButton = {
         var button = UIButton()
         let title = ViewUIValue.selectedItemView.cancleButtonTitle
-        let titleColor = UIValue.color.border
+        let titleColor = UIValue.color.font
         button.setTitle(title, for:.normal)
         button.setTitleColor(titleColor, for: .normal)
         button.titleLabel?.textAlignment = .center
@@ -101,7 +101,7 @@ class SelectedItemViewController: UIViewController {
     let startButton = {
         var button = UIButton()
         let title = ViewUIValue.selectedItemView.startButtonTitle
-        let titleColor = UIValue.color.border
+        let titleColor = UIValue.color.font
         button.setTitle(title, for: .normal)
         button.setTitleColor(titleColor, for: .normal)
         button.backgroundColor = UIValue.color.background
@@ -123,7 +123,7 @@ class SelectedItemViewController: UIViewController {
     func configCell() {
         guard let data else {return}
         img.image = UIImage(named: data.image)
-        coverView.layer.opacity = 0
+        coverView.layer.opacity = UIValue.opacity.clear
         let name = data.name + " \(UIValue.damagochi)"
         nameLabel.text = name
         let desc = "저는 \(name)입니당\n"
