@@ -16,32 +16,33 @@ class SelectCollectionViewCell: UICollectionViewCell {
     var img = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.image = UIImage(named: "1-1")
+        $0.contentMode = .scaleToFill
     }
     
     var coverView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = .black
-        $0.layer.opacity = 0.5
-        $0.layer.cornerRadius = 50
+        $0.layer.opacity = ViewUIValue.selectViewCell.coverViewOpactity
+        $0.layer.cornerRadius = ViewUIValue.selectViewCell.coverViewCornerRadius
         $0.layer.masksToBounds = true
     }
     
     var labelView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.backgroundColor = UIResource.color.background
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIResource.color.border.cgColor
-        $0.layer.cornerRadius = 5
+        $0.backgroundColor = UIValue.color.background
+        $0.layer.borderWidth = ViewUIValue.selectViewCell.labelViewBorderWidth
+        $0.layer.borderColor = UIValue.color.border.cgColor
+        $0.layer.cornerRadius = ViewUIValue.selectViewCell.labelViewCornerRadius
         $0.layer.masksToBounds = true
     }
     
     var label = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textAlignment = .center
-        let fontSize = CGFloat(UIResource.fontSize.thin)
+        let fontSize = CGFloat(UIValue.fontSize.thin)
         $0.font = .boldSystemFont(ofSize: fontSize)
-        $0.textColor = UIResource.color.font
-        $0.text = "준비중이에요"
+        $0.textColor = UIValue.color.font
+        $0.text = ViewUIValue.selectViewCell.labelDefaultText
     }
     
     override init(frame: CGRect) {
@@ -60,8 +61,6 @@ class SelectCollectionViewCell: UICollectionViewCell {
         self.addSubview(labelView)
         labelView.addSubview(label)
         
-        
-        img.contentMode = .scaleToFill
         img.snp.makeConstraints {
             $0.leading.top.trailing.equalTo(0)
             $0.bottom.equalTo(-30)

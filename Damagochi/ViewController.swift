@@ -14,6 +14,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationPresentFullAfterView(view: SelectViewController(), animated: false)
+        navigationPresentAfterView(view: SelectViewController(), style: .fullScreen, animated: false)
     }
 }

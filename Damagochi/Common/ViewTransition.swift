@@ -14,13 +14,10 @@ protocol ViewTransition {
     
    func presentAfterView(view: UIViewController, animated: Bool)
     
-   func navigationPresentAfterView(view: UIViewController,animated: Bool)
-    
-   func navigationPresentFullAfterView(view: UIViewController, animated: Bool)
+   func navigationPresentAfterView(view: UIViewController, style: UIModalPresentationStyle, animated: Bool)
     
    func popBeforeView(animated: Bool)
     
-   func dismissBeforeView(animated: Bool)
 }
 
 // 제네릭, 프로토콜
@@ -36,23 +33,14 @@ extension UIViewController: ViewTransition{
         self.present(view, animated: animated)
     }
     
-    func navigationPresentAfterView(view: UIViewController, animated: Bool) {
+    func navigationPresentAfterView(view: UIViewController, style: UIModalPresentationStyle, animated: Bool) {
         let nav = UINavigationController(rootViewController: view)
-        present(nav, animated: animated)
-    }
-    
-    func navigationPresentFullAfterView(view: UIViewController, animated: Bool) {
-        let nav = UINavigationController(rootViewController: view)
-        nav.modalPresentationStyle = .fullScreen
+        nav.modalPresentationStyle = style
         present(nav, animated: animated)
     }
     
     func popBeforeView(animated: Bool) {
         navigationController?.popViewController(animated: animated)
-    }
-     
-    func dismissBeforeView(animated: Bool) {
-        dismiss(animated: animated)
     }
 }
 

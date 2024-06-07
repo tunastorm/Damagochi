@@ -10,6 +10,10 @@ import UIKit
 struct Damagochi {
     var name: String
     
+    var height: Int = Int.random(in: 50...100)
+    
+    var weight: Int = Int.random(in: 100...150)
+    
     var level: Int = 1 {
         didSet {
             setImage()
@@ -67,13 +71,21 @@ struct Damagochi {
         default: print("Error")
         }
     }
+    
+    mutating func setHeightWeight() {
+        if level >= 10 {
+            return
+        }
+        height = height * level
+        weight = weight * level
+    }
 }
 
 
-struct Dummy {
-    static var dummyList: [Damagochi] = [
+struct DummyDamagochi {
+    static var damagochiList: [Damagochi] = [
         Damagochi(name: "따끔따끔"),
         Damagochi(name: "방실방실"),
-        Damagochi(name: "반짝반짝")
+        Damagochi(name: "반짝반짝"),
     ]
 }

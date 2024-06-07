@@ -8,7 +8,7 @@
 import UIKit
 
 
-struct UIResource {
+struct UIValue {
     static var damagochi = "다마고치"
     static var color = Color()
     static var image = Image()
@@ -30,7 +30,7 @@ struct Image {
 }
 
 struct FontSize {
-    let thin = 13
-    let middle = 14
-    let thick  = 15
+    let thin = CGFloat(13)
+    let middle = CGFloat(14)
+    let thick  = CGFloat(15)
 }

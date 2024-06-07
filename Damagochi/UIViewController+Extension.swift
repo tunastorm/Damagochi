@@ -8,6 +8,17 @@
 import UIKit
 
 extension UIViewController {
+    
+    func setDefaultUI() {
+        view.backgroundColor = UIValue.color.background
+        setNavigationTitleColor(UIValue.color.border)
+    }
+    
+    func setModalBackgroundUI() {
+        view.backgroundColor = .black
+        view.layer.opacity = ViewUIValue.selectedItemView.viewOpactiy
+    }
+    
     func setNavigationTitleColor(_ color: UIColor) {
         let textAttributes = [NSAttributedString.Key.foregroundColor: color]
         self.navigationController?.navigationBar.titleTextAttributes = textAttributes

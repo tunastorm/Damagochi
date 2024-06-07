@@ -42,7 +42,7 @@ extension SelectViewTable: CodeBaseUI {
     }
     
     func configUI() {
-        view.backgroundColor = UIResource.color.background
+        view.backgroundColor = UIValue.color.background
         tableView.rowHeight = 150
     }
 

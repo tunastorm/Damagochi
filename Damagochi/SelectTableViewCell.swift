@@ -49,7 +49,7 @@ extension SelectTableViewCell: CodeBaseUI{
     }
     
     func configUI() {
-        self.backgroundColor = UIResource.color.background
+        self.backgroundColor = UIValue.color.background
         leftView.backgroundColor = .blue
         centerView.backgroundColor = .green
         rightView.backgroundColor = .brown
