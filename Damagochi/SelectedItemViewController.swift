@@ -138,7 +138,10 @@ class SelectedItemViewController: UIViewController {
     }
     
     @objc func goMainView() {
-        navigationPresentAfterView(view: MainViewController(), style: .fullScreen, animated: false)
+        if 
+        let vc = MainViewController()
+        vc.data = data
+        navigationPresentAfterView(view: vc, style: .fullScreen, animated: false)
     }
 }
 

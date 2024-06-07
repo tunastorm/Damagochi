@@ -22,7 +22,7 @@ class SelectViewController: UIViewController {
     
     let sectionInsets = ViewUIValue.selectView.sectionInsets
     
-    let list = DummyDamagochi.damagochiList
+    let list = DamagochiList.list
     
     override func viewDidLoad() {
         super.viewDidLoad()

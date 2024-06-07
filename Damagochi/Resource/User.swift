@@ -8,13 +8,38 @@
 import Foundation
 
 
-struct User {
-    let name: String
+struct User: Codable {
+    var name: String
+    var damagochi: Int
 }
 
 
-struct DummyUser {
-    static var userList: [User] = [
-        User(name: "대장")
-    ]
+struct NowUser {
+    var user: User = User(name: "대장", damagochi: 0)
+    var now: User {
+        get {
+            return user
+        }
+        set {
+            user = newValue
+        }
+    }
+    var name: String {
+        get {
+            return user.name
+        }
+        set{
+            user.name = newValue
+        }
+    }
+    var damagochi: Int {
+        get {
+            return user.damagochi
+        }
+        set {
+            user.damagochi = newValue
+        }
+        
+    }
+    //static var now: User = User(name: "대장", damagochi: 1)
 }

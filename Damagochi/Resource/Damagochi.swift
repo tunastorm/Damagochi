@@ -7,8 +7,9 @@
 
 import UIKit
 
-struct Damagochi {
-    var name: String
+struct Damagochi: Codable {
+    let id: Int
+    let name: String
     
     var height: Int = Int.random(in: 50...100)
     
@@ -20,12 +21,12 @@ struct Damagochi {
         }
     }
     
-    var rice: Int = 0{
+    var rice: Int = 0 {
         didSet {
             calculateLevel()
         }
     }
-    var water: Int = 0{
+    var water: Int = 0 {
         didSet {
             calculateLevel()
         }
@@ -33,7 +34,8 @@ struct Damagochi {
     
     var image: String
     
-    init(name:String) {
+    init(id: Int, name: String) {
+        self.id = id
         self.name = name
         
         var image = ""
@@ -82,10 +84,10 @@ struct Damagochi {
 }
 
 
-struct DummyDamagochi {
-    static var damagochiList: [Damagochi] = [
-        Damagochi(name: "따끔따끔"),
-        Damagochi(name: "방실방실"),
-        Damagochi(name: "반짝반짝"),
+struct DamagochiList {
+    static var list: [Damagochi] = [
+        Damagochi(id: 1, name: "따끔따끔"),
+        Damagochi(id: 2, name: "방실방실"),
+        Damagochi(id: 3, name: "반짝반짝"),
     ]
 }

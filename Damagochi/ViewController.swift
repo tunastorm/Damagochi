@@ -10,10 +10,11 @@ import UIKit
 
 // SelectView와 MainView 분기처리
 class ViewController: UIViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         navigationPresentAfterView(view: SelectViewController(), style: .fullScreen, animated: false)
     }
 }

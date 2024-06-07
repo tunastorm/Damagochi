@@ -32,6 +32,7 @@
 		BCD9CB792C12E4C500FC0C57 /* SelectedItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB782C12E4C500FC0C57 /* SelectedItemViewController.swift */; };
 		BCD9CB7B2C12F62100FC0C57 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB7A2C12F62100FC0C57 /* MainViewController.swift */; };
 		BCD9CB7D2C12F6B800FC0C57 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB7C2C12F6B800FC0C57 /* User.swift */; };
+		BCD9CB7F2C13213900FC0C57 /* UserDefaultManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB7E2C13213900FC0C57 /* UserDefaultManger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		BCD9CB782C12E4C500FC0C57 /* SelectedItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedItemViewController.swift; sourceTree = "<group>"; };
 		BCD9CB7A2C12F62100FC0C57 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BCD9CB7C2C12F6B800FC0C57 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BCD9CB7E2C13213900FC0C57 /* UserDefaultManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				BCD9CB722C12D75900FC0C57 /* Error.swift */,
 				BCD9CB742C12DCDF00FC0C57 /* ViewUIValue.swift */,
 				BCD9CB7C2C12F6B800FC0C57 /* User.swift */,
+				BCD9CB7E2C13213900FC0C57 /* UserDefaultManger.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				BCD9CB4F2C11834400FC0C57 /* ViewTransition.swift in Sources */,
 				BCD9CB612C11A48300FC0C57 /* Damagochi.swift in Sources */,
 				BCD9CB7B2C12F62100FC0C57 /* MainViewController.swift in Sources */,
+				BCD9CB7F2C13213900FC0C57 /* UserDefaultManger.swift in Sources */,
 				BCD9CB732C12D75900FC0C57 /* Error.swift in Sources */,
 				BCD9CB632C11A63500FC0C57 /* UIValue.swift in Sources */,
 				BCD9CB7D2C12F6B800FC0C57 /* User.swift in Sources */,

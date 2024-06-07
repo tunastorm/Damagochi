@@ -8,6 +8,8 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    var data: Damagochi?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,7 @@ extension MainViewController: CodeBaseUI {
     }
     
     func configUI() {
-        navigationItem.title = DummyUser.userList[0].name + ViewUIValue.MainView.navigationTitle
+        navigationItem.title = NowUser.now.name + ViewUIValue.MainView.navigationTitle
         setDefaultUI()
     }
     
