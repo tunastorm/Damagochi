@@ -19,13 +19,16 @@
 		BCD9CB5C2C11A2A900FC0C57 /* SelectViewTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB5B2C11A2A900FC0C57 /* SelectViewTable.swift */; };
 		BCD9CB5F2C11A37C00FC0C57 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BCD9CB5E2C11A37C00FC0C57 /* SnapKit */; };
 		BCD9CB612C11A48300FC0C57 /* Damagochi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB602C11A48300FC0C57 /* Damagochi.swift */; };
-		BCD9CB632C11A63500FC0C57 /* UIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB622C11A63500FC0C57 /* UIResource.swift */; };
+		BCD9CB632C11A63500FC0C57 /* UICommonResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB622C11A63500FC0C57 /* UICommonResource.swift */; };
 		BCD9CB652C11A82600FC0C57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB642C11A82600FC0C57 /* ViewController.swift */; };
 		BCD9CB672C11AACC00FC0C57 /* SelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB662C11AACC00FC0C57 /* SelectTableViewCell.swift */; };
 		BCD9CB6A2C11ADA000FC0C57 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BCD9CB692C11ADA000FC0C57 /* Kingfisher */; };
 		BCD9CB6C2C11BF0000FC0C57 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB6B2C11BF0000FC0C57 /* SelectViewController.swift */; };
 		BCD9CB6E2C11C2D300FC0C57 /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB6D2C11C2D300FC0C57 /* SelectCollectionViewCell.swift */; };
 		BCD9CB712C11C36D00FC0C57 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BCD9CB702C11C36D00FC0C57 /* Then */; };
+		BCD9CB732C12D75900FC0C57 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB722C12D75900FC0C57 /* Error.swift */; };
+		BCD9CB752C12DCDF00FC0C57 /* UIViewResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB742C12DCDF00FC0C57 /* UIViewResource.swift */; };
+		BCD9CB772C12DDFD00FC0C57 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB762C12DDFD00FC0C57 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,11 +45,14 @@
 		BCD9CB522C1183A800FC0C57 /* CodeBaseUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseUI.swift; sourceTree = "<group>"; };
 		BCD9CB5B2C11A2A900FC0C57 /* SelectViewTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewTable.swift; sourceTree = "<group>"; };
 		BCD9CB602C11A48300FC0C57 /* Damagochi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Damagochi.swift; sourceTree = "<group>"; };
-		BCD9CB622C11A63500FC0C57 /* UIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResource.swift; sourceTree = "<group>"; };
+		BCD9CB622C11A63500FC0C57 /* UICommonResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICommonResource.swift; sourceTree = "<group>"; };
 		BCD9CB642C11A82600FC0C57 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BCD9CB662C11AACC00FC0C57 /* SelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableViewCell.swift; sourceTree = "<group>"; };
 		BCD9CB6B2C11BF0000FC0C57 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 		BCD9CB6D2C11C2D300FC0C57 /* SelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewCell.swift; sourceTree = "<group>"; };
+		BCD9CB722C12D75900FC0C57 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		BCD9CB742C12DCDF00FC0C57 /* UIViewResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewResource.swift; sourceTree = "<group>"; };
+		BCD9CB762C12DDFD00FC0C57 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +152,7 @@
 		BCD9CB592C11851F00FC0C57 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				BCD9CB762C12DDFD00FC0C57 /* UIViewController+Extension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -154,7 +161,9 @@
 			isa = PBXGroup;
 			children = (
 				BCD9CB602C11A48300FC0C57 /* Damagochi.swift */,
-				BCD9CB622C11A63500FC0C57 /* UIResource.swift */,
+				BCD9CB622C11A63500FC0C57 /* UICommonResource.swift */,
+				BCD9CB722C12D75900FC0C57 /* Error.swift */,
+				BCD9CB742C12DCDF00FC0C57 /* UIViewResource.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -240,8 +249,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD9CB772C12DDFD00FC0C57 /* UIViewController+Extension.swift in Sources */,
 				BCD9CB652C11A82600FC0C57 /* ViewController.swift in Sources */,
 				BCD9CB6E2C11C2D300FC0C57 /* SelectCollectionViewCell.swift in Sources */,
+				BCD9CB752C12DCDF00FC0C57 /* UIViewResource.swift in Sources */,
 				BCD9CB4D2C11831200FC0C57 /* ReusableIdentifier.swift in Sources */,
 				BCD9CB362C117B7F00FC0C57 /* AppDelegate.swift in Sources */,
 				BCD9CB382C117B7F00FC0C57 /* SceneDelegate.swift in Sources */,
@@ -252,7 +263,8 @@
 				BCD9CB672C11AACC00FC0C57 /* SelectTableViewCell.swift in Sources */,
 				BCD9CB4F2C11834400FC0C57 /* ViewTransition.swift in Sources */,
 				BCD9CB612C11A48300FC0C57 /* Damagochi.swift in Sources */,
-				BCD9CB632C11A63500FC0C57 /* UIResource.swift in Sources */,
+				BCD9CB732C12D75900FC0C57 /* Error.swift in Sources */,
+				BCD9CB632C11A63500FC0C57 /* UICommonResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

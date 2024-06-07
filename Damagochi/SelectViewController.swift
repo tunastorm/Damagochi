@@ -11,17 +11,16 @@ class SelectViewController: UIViewController {
     
     let collectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = UIViewResource.selectView.layoutMinLineSpacing
         layout.scrollDirection = .vertical
         layout.sectionInset = .zero
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .green
+        cv.backgroundColor = .clear
         return cv
     }()
     
-    let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    
+    let sectionInsets = UIViewResource.selectView.sectionInsets
     
     let list = Dummy.dummyList
     
@@ -55,6 +54,8 @@ extension SelectViewController: CodeBaseUI {
     
     func configUI() {
         view.backgroundColor = UIResource.color.background
+        navigationItem.title = UIViewResource.selectView.navigationTitle
+        setNavigationTitleColor(.white)
     }
 }
 
@@ -62,12 +63,10 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var itemSize = 0
+        var itemSize = UIViewResource.selectView.defaultItemSize
         let listSize = list.count
         
-        if  listSize < 20 {
-            itemSize = 20
-        } else {
+        if  listSize > itemSize {
             itemSize = listSize
         }
         
@@ -75,15 +74,23 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let itemIndex = indexPath.row
+        print("itemIndex: \(itemIndex)")
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identifier, for: indexPath) as? SelectCollectionViewCell else {
                     return UICollectionViewCell()
                 }
-        cell.backgroundColor = .none
+    
+        cell.backgroundColor = .clear
         
-        // 해당 Item의 내용에 맞게 변경 
-//        cell.img.image = UIImage(named: "1-9")
-//        cell.label.text = "고래고래"
-        
+        if itemIndex < list.count {
+            let data = list[itemIndex]
+            cell.img.image = UIImage(named: data.image)
+            cell.coverView.backgroundColor = .clear
+            cell.label.text = "\(data.name) " + UIResource.damagochi
+        }
+    
         return cell
     }
     
@@ -91,12 +98,11 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
             let width = collectionView.bounds.width
             let height = collectionView.bounds.height
             
-            let itemsPerRow: CGFloat = 3 // 최초 화면에 보여져야하는 row rottn
-            let widthPadding = sectionInsets.left * (itemsPerRow + 1)
-            var itemsPerColumn: CGFloat = 4 // 최초 화면에 보여져야하는 columns 갯수
-            itemsPerColumn = ceil(itemsPerColumn)
+            let itemsPerRow: CGFloat = UIViewResource.selectView.itemsPerRow // 최초 화면에 보여져야하는 row rottn
+            let widthPadding = UIViewResource.selectView.widthPadding
+            var itemsPerColumn: CGFloat = UIViewResource.selectView.itemsPerColumn // 최초 화면에 보여져야하는 columns 갯수
             print(itemsPerColumn)
-            let heightPadding = sectionInsets.top * (itemsPerColumn + 1)
+            let heightPadding = UIViewResource.selectView.heightPadding
             
             let cellWidth = (width - widthPadding) / itemsPerRow
             let cellHeight = (height - heightPadding) / itemsPerColumn
