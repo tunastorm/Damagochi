@@ -15,8 +15,8 @@ struct User: Codable {
 
 
 struct NowUser {
-    var user: User = User(name: "대장", damagochi: 0)
-    var now: User {
+    static var user = User(name: "대장", damagochi: 1)
+    static var now: User {
         get {
             return user
         }
@@ -24,7 +24,7 @@ struct NowUser {
             user = newValue
         }
     }
-    var name: String {
+    static var name: String {
         get {
             return user.name
         }
@@ -32,14 +32,12 @@ struct NowUser {
             user.name = newValue
         }
     }
-    var damagochi: Int {
+    static var damagochi: Int {
         get {
             return user.damagochi
         }
         set {
             user.damagochi = newValue
         }
-        
     }
-    //static var now: User = User(name: "대장", damagochi: 1)
 }

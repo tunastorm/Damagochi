@@ -9,6 +9,7 @@ import UIKit
 
 class SelectedItemViewController: UIViewController {
     
+    var user: User?
     var data: Damagochi?
     
     let backgroundView: UIView = {
@@ -138,8 +139,11 @@ class SelectedItemViewController: UIViewController {
     }
     
     @objc func goMainView() {
-        if 
+        guard let id = data?.id else { return }
+        NowUser.user.damagochi = id
+        UserDefaultsManager.nowUser = NowUser.user
         let vc = MainViewController()
+        vc.user = user
         vc.data = data
         navigationPresentAfterView(view: vc, style: .fullScreen, animated: false)
     }

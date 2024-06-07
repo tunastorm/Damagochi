@@ -22,10 +22,12 @@ class SelectViewController: UIViewController {
     
     let sectionInsets = ViewUIValue.selectView.sectionInsets
     
-    let list = DamagochiList.list
+    var user: User?
+    var damagochiList: [Damagochi]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        damagochiListChecker()
         configBasicSetting()
         configHierarchy()
         configLayout()
@@ -38,7 +40,20 @@ class SelectViewController: UIViewController {
         collectionView.register(SelectCollectionViewCell.self,
                                 forCellWithReuseIdentifier: SelectCollectionViewCell.identifier)
     }
-
+    
+    func damagochiListChecker() -> DamagochiState {
+        var damagochiState = DamagochiState.noList
+        if let list = UserDefaultsManager.damagochiList {
+            damagochiState = DamagochiState.existList
+            DamagochiList.list = list
+            damagochiList = DamagochiList.list
+        } else {
+            UserDefaultsManager.damagochiList = DamagochiList.list
+            damagochiList =  UserDefaultsManager.damagochiList
+            damagochiState = DamagochiState.existList
+        }
+        return damagochiState
+    }
 }
 
 extension SelectViewController: CodeBaseUI {
@@ -63,12 +78,11 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var itemSize = ViewUIValue.selectView.defaultItemSize
-        let listSize = list.count
         
-        if  listSize > itemSize {
+        if let listSize = damagochiList?.count, listSize > itemSize {
             itemSize = listSize
         }
-        
+
         return itemSize
     }
     
@@ -82,14 +96,14 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
         }
     
         cell.backgroundColor = .clear
-        
-        if itemIndex < list.count {
+
+        if let list = damagochiList, itemIndex < list.count {
             let data = list[itemIndex]
             cell.img.image = UIImage(named: data.image)
             cell.coverView.backgroundColor = .clear
             cell.label.text = "\(data.name) " + UIValue.damagochi
         }
-    
+            
         return cell
     }
     
@@ -123,7 +137,9 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SelectedItemViewController()
-        if indexPath.row < list.count {
+        
+        if let list = damagochiList, indexPath.row < list.count {
+            vc.user = user
             vc.data = list[indexPath.row]
         }
         navigationPresentAfterView(view: vc, style: .overFullScreen, animated: true)

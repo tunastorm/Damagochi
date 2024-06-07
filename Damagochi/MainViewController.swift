@@ -9,6 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    var user: User?
     var data: Damagochi?
 
     override func viewDidLoad() {
@@ -30,7 +31,9 @@ extension MainViewController: CodeBaseUI {
     }
     
     func configUI() {
-        navigationItem.title = NowUser.now.name + ViewUIValue.MainView.navigationTitle
+        if let userName = user?.name {
+            navigationItem.title = userName + ViewUIValue.MainView.navigationTitle
+        }
         setDefaultUI()
     }
     
