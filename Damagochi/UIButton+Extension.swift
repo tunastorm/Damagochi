@@ -1,6 +1,6 @@
 //
 //  UIButton+Extension.swift
-//  Damagochi
+//  Tamagochi
 //
 //  Created by 유철원 on 6/8/24.
 //

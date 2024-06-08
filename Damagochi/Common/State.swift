@@ -10,11 +10,11 @@ import Foundation
 
 enum UserState {
     case noUser
-    case existDamagochi
-    case noDamagochi
+    case existTamagochi
+    case noTamagochi
 }
 
-enum DamagochiState {
-    case noList
-    case existList
+enum TamagochiState {
+    case none
+    case exist
 }

@@ -1,6 +1,6 @@
 //
 //  MainViewController.swift
-//  Damagochi
+//  Tamagochi
 //
 //  Created by 유철원 on 6/7/24.
 //
@@ -10,9 +10,9 @@ import UIKit
 class MainViewController: UIViewController {
     
     var user: User?
-    var data: Damagochi?
+    var data: Tamagochi?
     
-    let damagochiArea = UIView()
+    let TamagochiArea = UIView()
     let inputArea = UIView()
     var bubbleView = UIView()
     let changeView = UIView()
@@ -32,7 +32,7 @@ class MainViewController: UIViewController {
     
     var img = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.image = UIValue.image.defaultDamagochi
+        $0.image = UIValue.image.defaultTamagochi
         $0.contentMode = .scaleToFill
     }
     
@@ -104,7 +104,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateData(forUser: true, forDamagochi: true)
+        updateData(forUser: true, forTamagochi: true)
         configNavigationBar()
         configHierarchy()
         configLayout()
@@ -112,24 +112,25 @@ class MainViewController: UIViewController {
         configData()
     }
 
-    func updateData(forUser: Bool, forDamagochi: Bool) {
+    func updateData(forUser: Bool, forTamagochi: Bool) {
         if let nowUser = UserDefaultsManager.nowUser, forUser {
             NowUser.user = nowUser
             self.user = NowUser.user
         }
            
-        if let damagochiList = UserDefaultsManager.damagochiList, let user, forDamagochi {
-            DamagochiList.list = damagochiList
-            self.data = DamagochiList.list[user.damagochi-1]
+        if let nowTamagochi = UserDefaultsManager.nowTamagochi, let user, forTamagochi {
+            NowTamagochi.tamagochi = nowTamagochi
+            self.data = NowTamagochi.tamagochi
         }
+        print(#function, NowTamagochi.tamagochi)
     }
     
     func configData() {
         if let user, let data {
-            bubbleLabel.text = damagochiMessage.list.randomElement()?.replacingOccurrences(of: "userName", with: user.name)
+            bubbleLabel.text = TamagochiMessage.list.randomElement()?.replacingOccurrences(of: "userName", with: user.name)
             img.image = UIImage(named: data.image)
             coverView.backgroundColor = .clear
-            nameLabel.text = data.name + " \(UIValue.damagochi)"
+            nameLabel.text = data.name + " \(UIValue.Tamagochi)"
             statusLabel.text = "LV\(data.level)﹒밥알 \(data.rice)개﹒물방울 \(data.water)개"
         }
     }
@@ -147,34 +148,54 @@ class MainViewController: UIViewController {
     }
     
     @objc func eatRice(_ sender: UIButton) {
-        guard let data else {return}
         var number = ViewUIValue.mainView.eatMinValue
-        if let input = Int(riceTextField.text ?? "1"), input <= ViewUIValue.mainView.riceMax {
-            number = input
+        
+        guard let input = riceTextField.text else {return}
+        
+        if input.isEmpty { // 빈 값 입력시 최소값(1) 유지
+            
+        } else if input.allSatisfy({ $0.isNumber }) { // riceMax 이하의 정수 N 입력 시 N증가
+            guard let inputNum = Int(input),
+                      inputNum <= ViewUIValue.mainView.riceMax else {return}
+            number = inputNum
+        } else { // 그 외 예외처리
+            return
         }
-        print(#function, "DamagochiList.list: \(DamagochiList.list)")
-        let newRice = DamagochiList.list[data.id-1].rice + number
+        
+        print(#function, "NowTamagochi.tamagochi: \(NowTamagochi.tamagochi)")
+        let newRice = NowTamagochi.tamagochi.rice + number
         print(#function, "newRice: \(newRice)")
-        DamagochiList.list[data.id-1].rice = newRice
-        UserDefaultsManager.damagochiList = DamagochiList.list
-
-        updateData(forUser: false, forDamagochi: true)
+        NowTamagochi.tamagochi.rice = newRice
+        UserDefaultsManager.nowTamagochi = NowTamagochi.tamagochi
+        
+        saveData(forUser: false, forTamagochi: true)
+        updateData(forUser: false, forTamagochi: true)
         configData()
     }
     
     @objc func eatWater(_ sender: UIButton) {
-        guard let data else {return}
         var number = ViewUIValue.mainView.eatMinValue
-        if let input = Int(waterTextField.text ?? "1"), input <= ViewUIValue.mainView.warterMax {
-            number = input
-        }
-        print(#function, "DamagochiList.list: \(DamagochiList.list)")
-        let newWater = DamagochiList.list[data.id-1].water + number
-        print(#function, "newWater: \(newWater)")
-        DamagochiList.list[data.id-1].water = newWater
-        UserDefaultsManager.damagochiList = DamagochiList.list
         
-        updateData(forUser: false, forDamagochi: true)
+        guard let input = waterTextField.text else {return}
+        
+        if input.isEmpty { // 빈 값 입력시 최소값(1) 유지
+            
+        } else if input.allSatisfy({ $0.isNumber }) { // waterMax 이하의 정수 N 입력 시 N증가
+            guard let inputNum = Int(input),
+                      inputNum <= ViewUIValue.mainView.warterMax else {return}
+            number = inputNum
+        } else { // 그 외 예외처리
+            return
+        }
+        
+        print(#function, "NowTamagochi.tamagochi: \(NowTamagochi.tamagochi)")
+        let newWater = NowTamagochi.tamagochi.water + number
+        print(#function, "newWater: \(newWater)")
+        NowTamagochi.tamagochi.water = newWater
+        UserDefaultsManager.nowTamagochi = NowTamagochi.tamagochi
+        
+        saveData(forUser: false, forTamagochi: true)
+        updateData(forUser: false, forTamagochi: true)
         configData()
     }
     
@@ -184,18 +205,19 @@ class MainViewController: UIViewController {
     
 }
 
+
 extension MainViewController: CodeBaseUI {
     func configHierarchy() {
-        view.addSubview(damagochiArea)
+        view.addSubview(TamagochiArea)
         view.addSubview(inputArea)
-        damagochiArea.addSubview(bubbleView)
+        TamagochiArea.addSubview(bubbleView)
         bubbleView.addSubview(bubble)
         bubbleView.addSubview(bubbleLabel)
-        damagochiArea.addSubview(img)
-        damagochiArea.addSubview(coverView)
-        damagochiArea.addSubview(labelView)
+        TamagochiArea.addSubview(img)
+        TamagochiArea.addSubview(coverView)
+        TamagochiArea.addSubview(labelView)
         labelView.addSubview(nameLabel)
-        damagochiArea.addSubview(statusLabel)
+        TamagochiArea.addSubview(statusLabel)
         
         inputArea.addSubview(changeView)
         changeView.addSubview(riceTextField)
@@ -207,7 +229,7 @@ extension MainViewController: CodeBaseUI {
     }
     
     func configLayout() {
-        damagochiArea.snp.makeConstraints{
+        TamagochiArea.snp.makeConstraints{
             $0.height.equalToSuperview().multipliedBy(0.5)
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(40)
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(30)
@@ -215,7 +237,7 @@ extension MainViewController: CodeBaseUI {
         
         inputArea.snp.makeConstraints{
             $0.height.equalToSuperview().multipliedBy(0.2)
-            $0.top.equalTo(damagochiArea.snp.bottom)
+            $0.top.equalTo(TamagochiArea.snp.bottom)
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(30)
         }
         

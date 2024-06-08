@@ -1,6 +1,6 @@
 //
 //  SettingViewController.swift
-//  Damagochi
+//  Tamagochi
 //
 //  Created by 유철원 on 6/8/24.
 //
@@ -8,25 +8,32 @@
 import UIKit
 
 class SettingViewController: UIViewController {
-
+    
     var user: User?
+    var data: Tamagochi?
     
     let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUserData()
+        updateData(forUser: true, forTamagochi: true)
         configBaseSetting()
         configHierarchy()
         configLayout()
         configUI()
     }
     
-    func updateUserData() {
-        if let nowUser = UserDefaultsManager.nowUser {
+    func updateData(forUser: Bool, forTamagochi: Bool) {
+        if let nowUser = UserDefaultsManager.nowUser, forUser {
             NowUser.user = nowUser
             self.user = NowUser.user
         }
+           
+        if let nowTamagochi = UserDefaultsManager.nowTamagochi, let user, forTamagochi {
+            NowTamagochi.tamagochi = nowTamagochi
+            self.data = NowTamagochi.tamagochi
+        }
+        print(#function, NowTamagochi.tamagochi)
     }
     
     func configBaseSetting() {
@@ -67,11 +74,20 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as! SettingTableViewCell
         
-        
         if let user {
+            cell.delegate = self
             cell.configCell(rowIndex)
         }
     
         return cell
     }
 }
+
+extension SettingViewController: CellTransitionDelegate {
+    func turnBackRootView() {
+        print(#function)
+        navigationPresentAfterView(view: ViewController(), style: .fullScreen, animated: false)
+    }
+}
+
+

@@ -1,14 +1,11 @@
 //
 //  UINumericalValue.swift
-//  Damagochi
+//  Tamagochi
 //
 //  Created by 유철원 on 6/7/24.
 //
 
 import UIKit
-
-
-
 
 
 struct ViewUIValue {
@@ -23,7 +20,7 @@ struct ViewUIValue {
 }
 
 struct SelectViewValue {
-    let navigationTitle = UIValue.damagochi + " 선택하기"
+    let navigationTitle = UIValue.Tamagochi + " 선택하기"
     let defaultItemSize = 20
     let layoutMinLineSpacing = CGFloat(0)
     let sectionInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
@@ -57,7 +54,7 @@ struct SelectedItemViewVlaue {
 }
 
 struct MainViewValue {
-    let navigationTitle =  "님의 " + UIValue.damagochi 
+    let navigationTitle =  "님의 " + UIValue.Tamagochi 
     let eatRiceButtonTitle = "밥먹기"
     let eatRicePlaceholder = "밥주세용"
     let eatWaterPlaceholder = "물주세용"
@@ -77,7 +74,7 @@ struct SettingViewValue {
 
 struct SettingViewCellValue {
     let changeUserNameLabel = "내 이름 설정하기"
-    let changeDamagochiLabel = "다마고치 변경하기"
+    let changeTamagochiLabel = "다마고치 변경하기"
     let resetDataLabel = "데이터 초기화"
 }
 

@@ -1,6 +1,6 @@
 //
 //  SelectViewController.swift
-//  Damagochi
+//  Tamagochi
 //
 //  Created by 유철원 on 6/6/24.
 //
@@ -23,30 +23,31 @@ class SelectViewController: UIViewController {
     let sectionInsets = ViewUIValue.selectView.sectionInsets
     
     var user: User?
-    var damagochiList: [Damagochi]?
+    var tamagochiList = NowTamagochi.nameList
+    var data: Tamagochi?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateData(forUser: true, forDamagochi: true)
-        damagochiListChecker()
+        updateData(forUser: true, forTamagochi: true)
+//        tamagochiChecker()
         configBasicSetting()
         configHierarchy()
         configLayout()
         configUI()
     }
     
-    func updateData(forUser: Bool, forDamagochi: Bool) {
+    func updateData(forUser: Bool, forTamagochi: Bool) {
         if let nowUser = UserDefaultsManager.nowUser, forUser {
             NowUser.user = nowUser
             self.user = NowUser.user
         }
            
-        if let damagochiList = UserDefaultsManager.damagochiList, let user, forDamagochi {
-            DamagochiList.list = damagochiList
-            self.damagochiList = DamagochiList.list
+        if let nowTamagochi = UserDefaultsManager.nowTamagochi, let user, forTamagochi {
+            NowTamagochi.tamagochi = nowTamagochi
+            self.data = NowTamagochi.tamagochi
         }
         print(#function, "user: \(user)")
-        print(#function, "damagochiList: \(damagochiList)")
+        print(#function, "data: \(data)")
     }
     
     func configBasicSetting() {
@@ -56,13 +57,13 @@ class SelectViewController: UIViewController {
                                 forCellWithReuseIdentifier: SelectCollectionViewCell.identifier)
     }
     
-    func damagochiListChecker() -> DamagochiState {
-        var damagochiState = DamagochiState.noList
-        if let list = damagochiList {
-            damagochiState = DamagochiState.existList
+    func tamagochiChecker() -> TamagochiState {
+        var tamagochiState = TamagochiState.none
+        if let id = user?.tamagochi, id > 0 {
+            tamagochiState = TamagochiState.exist
         }
-        print(#function, damagochiState)
-        return damagochiState
+        print(#function, tamagochiState)
+        return tamagochiState
     }
 }
 
@@ -89,8 +90,8 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var itemSize = ViewUIValue.selectView.defaultItemSize
         
-        if let listSize = damagochiList?.count, listSize > itemSize {
-            itemSize = listSize
+        if  tamagochiList.count > itemSize {
+            itemSize = tamagochiList.count
         }
 
         return itemSize
@@ -107,11 +108,10 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
     
         cell.backgroundColor = .clear
 
-        if let list = damagochiList, itemIndex < list.count {
-            let data = list[itemIndex]
-            cell.img.image = UIImage(named: data.image)
+        if itemIndex < tamagochiList.count, let data {
+            cell.img.image = UIImage(named: "\(itemIndex+1)-\(data.level)")
             cell.coverView.backgroundColor = .clear
-            cell.label.text = "\(data.name) " + UIValue.damagochi
+            cell.label.text = "\(tamagochiList[itemIndex]) " + UIValue.Tamagochi
         }
             
         return cell
@@ -145,8 +145,8 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SelectedItemViewController()
         
-        if let list = damagochiList, indexPath.row < list.count {
-            vc.data = list[indexPath.row]
+        if indexPath.row < tamagochiList.count {
+            vc.nameIndex = indexPath.row
         }
         navigationPresentAfterView(view: vc, style: .overFullScreen, animated: true)
     }

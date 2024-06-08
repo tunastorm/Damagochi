@@ -1,6 +1,6 @@
 //
 //  UIViewController+Extension.swift
-//  Damagochi
+//  Tamagochi
 //
 //  Created by 유철원 on 6/7/24.
 //
@@ -27,5 +27,16 @@ extension UIViewController {
         self.navigationController?.navigationBar.tintColor = UIValue.color.font
         let textAttributes = [NSAttributedString.Key.foregroundColor: color]
         self.navigationController?.navigationBar.titleTextAttributes = textAttributes
+    }
+    
+    func saveData(forUser: Bool, forTamagochi: Bool) {
+        if forUser {
+            UserDefaultsManager.nowUser = NowUser.user
+        }
+        
+        if forTamagochi {
+            UserDefaultsManager.nowTamagochi = NowTamagochi.tamagochi
+        }
+        
     }
 }

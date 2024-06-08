@@ -23,6 +23,7 @@ protocol ViewTransition {
 // 제네릭, 프로토콜
 // some -> Opaque Type, any -> Existential Type
 // WWDC
+
 extension UIViewController: ViewTransition{
 
     func pushAfterView(view: UIViewController, animated: Bool) {
@@ -43,6 +44,13 @@ extension UIViewController: ViewTransition{
         navigationController?.popViewController(animated: animated)
     }
 }
+
+protocol CellTransitionDelegate {
+     
+    func turnBackRootView()
+    
+}
+
 
 protocol DataReceiveDelegate {
     func receiveData<T>(data: T)

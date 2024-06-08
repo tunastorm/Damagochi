@@ -1,6 +1,6 @@
 //
 //  UserDefaultManger.swift
-//  Damagochi
+//  Tamagochi
 //
 //  Created by 유철원 on 6/7/24.
 //
@@ -11,13 +11,13 @@ import Foundation
 struct UserDefaultsManager {
     
     static var userKey = "nowUser"
-    static var damagochiKey = "DamagochiList"
+    static var tamagochiKey = "nowTamagochi"
     
     @UserDefaultWrapper(key: "nowUser", defaultValue: nil)
     static var nowUser: User?
     
-    @UserDefaultWrapper(key: "DamagochiList", defaultValue: nil)
-    static var damagochiList: [Damagochi]?
+    @UserDefaultWrapper(key: "nowTamagochi", defaultValue: nil)
+    static var nowTamagochi: Tamagochi?
     
     static func removeValue(_ key: String) {
         UserDefaults.standard.removeObject(forKey: key)

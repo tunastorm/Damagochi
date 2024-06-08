@@ -1,6 +1,6 @@
 //
 //  SelectCollectionViewCell.swift
-//  Damagochi
+//  Tamagochi
 //
 //  Created by 유철원 on 6/6/24.
 //
@@ -15,7 +15,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
     // 뷰 객체 생성 및 초기화
     var img = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.image = UIValue.image.defaultDamagochi
+        $0.image = UIValue.image.defaultTamagochi
         $0.contentMode = .scaleToFill
     }
     

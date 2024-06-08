@@ -8,73 +8,92 @@
 import UIKit
 
 struct Tamagochi: Codable {
-    let id: Int
+    var id: Int
     var name: String = ""
     
     var height: Int = Int.random(in: 50...100)
     
     var weight: Int = Int.random(in: 100...150)
     
-    var level: Int = NowUser.user.level
+    var level: Int = 1 {
+        didSet {
+            setImage()
+        }
+    }
     
-    var image: String
+    var image: String = "1-1"
     
-    var rice: Int = NowUser.user.rice
-    
-    var water: Int = NowUser.user.water
+    var rice: Int = 0 {
+        didSet {
+            calculateLevel()
+        }
+    }
+    var water: Int = 0 {
+        didSet {
+            calculateLevel()
+        }
+    }
     
     init(id: Int) {
         self.id = id
-        if id > 0 && id <= 3{
+        if id > 0 && id <= NowTamagochi.nameList.count {
             self.name = NowTamagochi.nameList[id]
+            self.image = "\(id)-\(level)"
         }
-        var user = NowUser.user
+    }
+    mutating func setId(_ newId: Int) {
+        id = newId
+    }
+    
+    mutating func setName(_ newName: String) {
+        name = newName
+    }
+    
+    mutating func calculateLevel() {
+        if level >= 10 {
+            return
+        }
         
-        var image = ""
-        switch name {
-        case "따끔따끔":
-            image = "1-\(user.level)"
-        case "방실방실":
-            image = "2-\(user.level)"
-        case "반짝반짝":
-            image = "3-\(user.level)"
-        default: print("Error")
+        let exp = (rice/5) + (water/2)
+        print(#function, "exp: \(exp)" )
+    
+        switch exp {
+        case 20..<30: level = 2
+        case 30..<40: level = 3
+        case 40..<50: level = 4
+        case 50..<60: level = 5
+        case 60..<70: level = 6
+        case 70..<80: level = 7
+        case 80..<90: level = 8
+        case 90..<100: level = 9
+        case 100...: level = 10
+        default: return
         }
-        self.image = image
     }
     
     mutating func setImage() {
-        var user = NowUser.user
-        
-        if user.level >= 10 {
+        if level >= 10 {
             return
         }
-    
-        switch name {
-        case "따끔따끔":
-            image = "1-\(user.level)"
-        case "방실방실":
-            image = "2-\(user.level)"
-        case "반짝반짝":
-            image = "3-\(user.level)"
-        default: print("Error")
-        }
+        self.image = "\(id)-\(level)"
     }
     
     mutating func setHeightWeight() {
-        var user = NowUser.user
-        if user.level >= 10 {
+        if level >= 10 {
             return
         }
-        height = height * user.level
-        weight = weight * user.level
+        height = height * level
+        weight = weight * level
     }
 }
 
 
 struct NowTamagochi {
-    static var Tamagochi = Tamagochi(id: 0)
-    static var nameList: [String] = ["따끔따끔", "방실방실", "반짝반짝"]
+    static var tamagochi = DefaultData.tamagochi
+    static var nameList = ["따끔따끔", "방실방실", "반짝반짝"]
+//    static var tamagochiList: [String] = [
+//        Tamagochi(id:1), Tamagochi(id:2), Tamagochi(id: 3)
+//    ]
 }
 
 

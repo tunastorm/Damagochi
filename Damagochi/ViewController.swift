@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Damagochi
+//  Tamagochi
 //
 //  Created by 유철원 on 6/6/24.
 //
@@ -15,17 +15,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        rollbackData()
-        updateData(forUser: true, forDamagochi: true)
+        updateData(forUser: true, forTamagochi: true)
         let userState = userChecker()
         switch userState {
-        case .existDamagochi: goMainView()
-        case .noDamagochi: goSelectView()
+        case .existTamagochi: goMainView()
+        case .noTamagochi: goSelectView()
         case .noUser: print("[ErrorPoint] \(String(describing:self))-\(#function)")
         }
     }
     
-    func updateData(forUser: Bool, forDamagochi: Bool) {
+    func updateData(forUser: Bool, forTamagochi: Bool) {
         if let nowUser = UserDefaultsManager.nowUser, forUser {
             NowUser.user = nowUser
             self.user = NowUser.user
@@ -34,19 +33,21 @@ class ViewController: UIViewController {
             user = NowUser.user
         }
            
-        if let damagochiList = UserDefaultsManager.damagochiList, let user, forDamagochi {
-            DamagochiList.list = damagochiList
+        if let nowTamagochi = UserDefaultsManager.nowTamagochi, let user, forTamagochi {
+            NowTamagochi.tamagochi = nowTamagochi
         } else {
-            UserDefaultsManager.damagochiList = DamagochiList.list
+            UserDefaultsManager.nowTamagochi = NowTamagochi.tamagochi
         }
+        print(#function, NowUser.user)
+        print(#function, NowTamagochi.tamagochi)
     }
     
     func userChecker() -> UserState {
         var userState = UserState.noUser
         if let user {
-            switch user.damagochi {
-            case 0: userState = UserState.noDamagochi
-            case 1...3: userState = UserState.existDamagochi
+            switch user.tamagochi {
+            case 0: userState = UserState.noTamagochi
+            case 1...3: userState = UserState.existTamagochi
             default: print("[ErrorPoint] \(String(describing:self))-\(#function)")
             }
         }
@@ -55,26 +56,14 @@ class ViewController: UIViewController {
     }
     
     func goSelectView() {
-        let vc = SelectViewController()
-//        vc.user = self.user
-        navigationPresentAfterView(view: vc, style: .fullScreen, animated: false)
+        navigationPresentAfterView(view: SelectViewController(), 
+                                   style: .fullScreen,
+                                   animated: false)
     }
     
     func goMainView() {
-        let vc = MainViewController()
-        if let id = user?.damagochi {
-            print(#function, "DamagochiList.list: \(DamagochiList.list)")
-//            vc.data = DamagochiList.list[id-1]
-//            vc.user = self.user
-            navigationPresentAfterView(view: vc, style: .fullScreen, animated: false)
-        }
-    }
-    
-    // 테스트용
-    func rollbackData() {
-        let userKey = UserDefaultsManager.userKey
-        let dataKey = UserDefaultsManager.damagochiKey
-        UserDefaultsManager.removeValue(userKey)
-        UserDefaultsManager.removeValue(dataKey)
+        navigationPresentAfterView(view: MainViewController(),
+                                   style: .fullScreen,
+                                   animated: false)
     }
 }

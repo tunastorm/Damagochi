@@ -1,6 +1,6 @@
 //
 //  SelectedItemViewController.swift
-//  Damagochi
+//  Tamagochi
 //
 //  Created by 유철원 on 6/7/24.
 //
@@ -10,7 +10,10 @@ import UIKit
 class SelectedItemViewController: UIViewController {
     
     var user: User?
-    var data: Damagochi?
+    var data: Tamagochi = NowTamagochi.tamagochi
+    var nameIndex: Int?
+    var id: Int?
+    var name: String?
     
     let backgroundView: UIView = {
         var view = UIView()
@@ -28,13 +31,13 @@ class SelectedItemViewController: UIViewController {
         return view
     }()
     
-    let damagochiArea = UIView()
+    let TamagochiArea = UIView()
     let descriptionArea = UIView()
     let buttonArea = UIView()
     
     var img = UIImageView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.image = UIValue.image.defaultDamagochi
+        $0.image = UIValue.image.defaultTamagochi
         $0.contentMode = .scaleToFill
     }
     
@@ -114,34 +117,39 @@ class SelectedItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateData(forUser: true, forDamagochi: false)
+        updateData(forUser: true, forTamagochi: false)
         configHierarchy()
         configLayout()
         configUI()
         configCell()
     }
     
-    func updateData(forUser: Bool, forDamagochi: Bool) {
+    func updateData(forUser: Bool, forTamagochi: Bool) {
         if let nowUser = UserDefaultsManager.nowUser, forUser {
             NowUser.user = nowUser
             self.user = NowUser.user
         }
            
-        if let damagochiList = UserDefaultsManager.damagochiList, let user, forDamagochi {
-            DamagochiList.list = damagochiList
-            self.data = DamagochiList.list[user.damagochi-1]
+        if let nowTamagochi = UserDefaultsManager.nowTamagochi , let user, forTamagochi {
+            NowTamagochi.tamagochi = nowTamagochi
+            self.data = NowTamagochi.tamagochi
         }
     }
     
     func configCell() {
-        guard let data else {return}
-        img.image = UIImage(named: data.image)
+        guard let nameIndex else {return}
+        id = nameIndex + 1
+        guard let id else {return}
+        print(#function,"| id: \(id) | ", "data.level: \(data.level)")
+        img.image = UIImage(named: "\(id)-\(data.level)")
         coverView.layer.opacity = UIValue.opacity.clear
-        let name = data.name + " \(UIValue.damagochi)"
-        nameLabel.text = name
+        name = NowTamagochi.nameList[nameIndex]
+        guard let name else {return}
+        let fullName = name + " \(UIValue.Tamagochi)"
+        nameLabel.text = fullName
         var desc = ""
-        var descList = ViewUIValue.selectedItemView.descriptionBase
-        let descValues = [name, String(data.height), String(data.weight), data.name]
+        let descList = ViewUIValue.selectedItemView.descriptionBase
+        let descValues = [fullName, String(data.height), String(data.weight), name]
         for (idx, regx) in ViewUIValue.selectedItemView.descriptionRegx.enumerated() {
             let line = descList[idx].replacingOccurrences(of:regx, with:descValues[idx])
             desc = desc + line
@@ -154,13 +162,16 @@ class SelectedItemViewController: UIViewController {
     }
     
     @objc func goMainView() {
-        guard let id = data?.id else { return }
-        if user?.damagochi != id {
-            NowUser.user.damagochi = id
+        if let id, let name, user?.tamagochi != id { // id = nameIndex + 1
+            NowUser.user.tamagochi = id
+            NowTamagochi.tamagochi.setId(id)
+            NowTamagochi.tamagochi.setName(name)
+            NowTamagochi.tamagochi.setImage()
+            print(#function, NowUser.user)
+            print(#function, NowTamagochi.tamagochi)
         }
-        UserDefaultsManager.nowUser = NowUser.user
-        let vc = MainViewController()
-        navigationPresentAfterView(view: vc, style: .fullScreen, animated: false)
+        saveData(forUser: true, forTamagochi: true)
+        navigationPresentAfterView(view: MainViewController(), style: .fullScreen, animated: false)
     }
 }
 
@@ -170,13 +181,13 @@ extension SelectedItemViewController: CodeBaseUI {
         view.addSubview(modalView)
         view.bringSubviewToFront(modalView)
         
-        modalView.addSubview(damagochiArea)
+        modalView.addSubview(TamagochiArea)
         modalView.addSubview(descriptionArea)
         modalView.addSubview(buttonArea)
         
-        damagochiArea.addSubview(img)
-        damagochiArea.addSubview(coverView)
-        damagochiArea.addSubview(labelView)
+        TamagochiArea.addSubview(img)
+        TamagochiArea.addSubview(coverView)
+        TamagochiArea.addSubview(labelView)
         labelView.addSubview(nameLabel)
         
         descriptionArea.addSubview(lineView1)
@@ -198,14 +209,14 @@ extension SelectedItemViewController: CodeBaseUI {
             $0.centerY.equalTo(view.safeAreaLayoutGuide)
         }
         
-        damagochiArea.snp.makeConstraints{
+        TamagochiArea.snp.makeConstraints{
             $0.height.equalToSuperview().multipliedBy(0.45)
             $0.top.horizontalEdges.equalToSuperview()
         }
         
         descriptionArea.snp.makeConstraints{
             $0.height.equalToSuperview().multipliedBy(0.45)
-            $0.top.equalTo(damagochiArea.snp.bottom)
+            $0.top.equalTo(TamagochiArea.snp.bottom)
             $0.bottom.horizontalEdges.equalToSuperview()
         }
         

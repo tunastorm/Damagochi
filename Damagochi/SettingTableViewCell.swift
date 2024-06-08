@@ -1,6 +1,6 @@
 //
 //  SettingTableViewCell.swift
-//  Damagochi
+//  Tamagochi
 //
 //  Created by 유철원 on 6/8/24.
 //
@@ -8,6 +8,8 @@
 import UIKit
 
 class SettingTableViewCell: UITableViewCell {
+    
+    var delegate: CellTransitionDelegate?
     
     let settingImage = UIImageView().then{
         $0.tintColor = UIValue.color.font
@@ -20,11 +22,20 @@ class SettingTableViewCell: UITableViewCell {
         $0.textAlignment = .left
     }
     
-    let goButton = UIButton().then {
+    var configuration = UIButton.Configuration.plain()
+   
+    let goButton = UIButton(type:.system).then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+//        $0.configuration = .plain()
+//        $0.configuration?.imagePlacement = .trailing
+        $0.semanticContentAttribute = .forceRightToLeft
         $0.titleLabel?.font = .boldSystemFont(ofSize: UIValue.fontSize.thin)
-        $0.titleLabel?.textColor = UIValue.color.font
         $0.titleLabel?.textAlignment = .right
-        $0.setTitle(">", for: .normal)
+        $0.tintColor = .systemGray3
+        $0.setTitleColor(UIValue.color.font, for: .normal)
+        $0.setImage(UIValue.image.chevronRight, for: .normal)
+        $0.contentMode = .scaleToFill
+        $0.backgroundColor = .blue
     }
     
 
@@ -43,7 +54,7 @@ class SettingTableViewCell: UITableViewCell {
     func configCell(_ rowIndex: Int) {
         switch rowIndex {
         case 0: configChangeUserName()
-        case 1: configChangeDamagochi()
+        case 1: configChangeTamagochi()
         case 2: configResetData()
         default: return
         }
@@ -52,13 +63,18 @@ class SettingTableViewCell: UITableViewCell {
     func configChangeUserName() {
         settingImage.image = UIValue.image.writeName
         settingLabel.text = ViewUIValue.settingViewCell.changeUserNameLabel
+        goButton.setTitle(NowUser.user.name, for: .normal)
+        goButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        goButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0,
+                                                     bottom: 0, right: 10)
         goButton.addTarget(self, action: #selector(goChangeNameView), for: .touchUpInside)
     }
     
-    func configChangeDamagochi() {
-        settingImage.image = UIValue.image.changeDamagochi
-        settingLabel.text = ViewUIValue.settingViewCell.changeDamagochiLabel
-        goButton.addTarget(self, action: #selector(goChangeDamagochiView), for: .touchUpInside)
+    func configChangeTamagochi() {
+        settingImage.image = UIValue.image.changeTamagochi
+        settingLabel.text = ViewUIValue.settingViewCell.changeTamagochiLabel
+       
+        goButton.addTarget(self, action: #selector(goChangeTamagochiView), for: .touchUpInside)
         
     }
     
@@ -73,12 +89,25 @@ class SettingTableViewCell: UITableViewCell {
         
     }
     
-    @objc func goChangeDamagochiView() {
+    @objc func goChangeTamagochiView() {
         
     }
     
     @objc func resetData() {
+        print("hihihihi")
+        let userKey = UserDefaultsManager.userKey
+        let dataKey = UserDefaultsManager.tamagochiKey
+        NowUser.user = DefaultData.user
+        NowTamagochi.tamagochi = DefaultData.tamagochi
+        UserDefaultsManager.removeValue(userKey)
+        UserDefaultsManager.removeValue(dataKey)
         
+        if let user = UserDefaultsManager.nowUser,
+           let tamagochi = UserDefaultsManager.nowTamagochi {
+            print(#function, user)
+            print(#function, tamagochi)
+        }
+        delegate?.turnBackRootView()
     }
 }
 
@@ -105,8 +134,8 @@ extension SettingTableViewCell: CodeBaseUI {
         
         goButton.snp.makeConstraints{
             $0.height.equalTo(20)
-            $0.width.equalTo(50)
-            $0.trailing.equalToSuperview().inset(20)
+            $0.width.equalTo(100)
+            $0.trailing.equalToSuperview().inset(10)
             $0.centerY.equalToSuperview()
         }
     }

@@ -10,12 +10,12 @@ import Foundation
 
 struct User: Codable {
     var name: String
-    var damagochi: Int
+    var tamagochi: Int 
 }
 
 
 struct NowUser {
-    static var user = User(name: "대장", damagochi: 0)
+    static var user = DefaultData.user
     static var now: User {
         get {
             return user
@@ -33,14 +33,12 @@ struct NowUser {
         }
     }
     
-    static var damagochi: Int {
+    static var tamagochi: Int {
         get {
-            return user.damagochi
+            return user.tamagochi
         }
         set {
-           
-            user.damagochi = newValue
+            user.tamagochi = newValue
         }
     }
-    
 }
