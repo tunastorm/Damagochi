@@ -49,7 +49,13 @@ struct SelectedItemViewVlaue {
 
 struct MainViewValue {
     let navigationTitle =  "님의 " + UIValue.damagochi 
+    let eatRiceButtonTitle = "밥먹기"
+    let eatRicePlaceholder = "밥주세용"
+    let eatWaterPlaceholder = "물주세용"
+    let eatWaterButtonTitle = "물먹기"
     let coverViewCornerRadious = CGFloat(110)
+    let eatButtonRadious = CGFloat(5)
+    let eatButtonBorderWidth = CGFloat(1)
 }
 
 

@@ -34,6 +34,7 @@
 		BCD9CB7D2C12F6B800FC0C57 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB7C2C12F6B800FC0C57 /* User.swift */; };
 		BCD9CB7F2C13213900FC0C57 /* UserDefaultsManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB7E2C13213900FC0C57 /* UserDefaultsManger.swift */; };
 		BCD9CB812C13248300FC0C57 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB802C13248300FC0C57 /* State.swift */; };
+		BCD9CB832C14051C00FC0C57 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB822C14051C00FC0C57 /* UIButton+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		BCD9CB7C2C12F6B800FC0C57 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BCD9CB7E2C13213900FC0C57 /* UserDefaultsManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManger.swift; sourceTree = "<group>"; };
 		BCD9CB802C13248300FC0C57 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		BCD9CB822C14051C00FC0C57 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				BCD9CB762C12DDFD00FC0C57 /* UIViewController+Extension.swift */,
+				BCD9CB822C14051C00FC0C57 /* UIButton+Extension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				BCD9CB772C12DDFD00FC0C57 /* UIViewController+Extension.swift in Sources */,
 				BCD9CB652C11A82600FC0C57 /* ViewController.swift in Sources */,
 				BCD9CB6E2C11C2D300FC0C57 /* SelectCollectionViewCell.swift in Sources */,
+				BCD9CB832C14051C00FC0C57 /* UIButton+Extension.swift in Sources */,
 				BCD9CB752C12DCDF00FC0C57 /* ViewUIValue.swift in Sources */,
 				BCD9CB4D2C11831200FC0C57 /* ReusableIdentifier.swift in Sources */,
 				BCD9CB812C13248300FC0C57 /* State.swift in Sources */,

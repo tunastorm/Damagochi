@@ -23,5 +23,4 @@ extension UIViewController {
         let textAttributes = [NSAttributedString.Key.foregroundColor: color]
         self.navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
-    
 }

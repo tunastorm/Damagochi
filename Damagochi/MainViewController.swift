@@ -55,7 +55,7 @@ class MainViewController: UIViewController {
         $0.textAlignment = .center
         $0.font = .boldSystemFont(ofSize: UIValue.fontSize.thin)
         $0.textColor = UIValue.color.font
-        $0.text = "따끔따끔 다마고치"
+        $0.text = UIValue.defaultMessage
     }
     
     var statusLabel = UILabel().then {
@@ -63,19 +63,42 @@ class MainViewController: UIViewController {
         $0.textAlignment = .center
         $0.font = .boldSystemFont(ofSize: UIValue.fontSize.middle)
         $0.textColor = UIValue.color.font
-        $0.text = "LV1﹒밥알 0개﹒물방울 0개"
+        $0.text = UIValue.defaultMessage
     }
     
     var riceTextField = UITextField().then {
         $0.backgroundColor = .clear
+        $0.placeholder = ViewUIValue.MainView.eatRicePlaceholder
+        $0.textAlignment = .center
+        $0.font = .systemFont(ofSize: UIValue.fontSize.thin)
     }
     
     var waterTextField = UITextField().then {
         $0.backgroundColor = .clear
+        $0.placeholder = ViewUIValue.MainView.eatWaterPlaceholder
+        $0.textAlignment = .center
+        $0.font = .systemFont(ofSize: UIValue.fontSize.thin)
     }
     
-    var riceLineView = UIView()
-    var waterLineView = UIView()
+    var riceLineView = UIView().then {
+        $0.backgroundColor = UIValue.color.font
+    }
+    var waterLineView = UIView().then{
+        $0.backgroundColor = UIValue.color.font
+    }
+    
+    var riceEatButton = UIButton().then{
+        $0.setEatButtonUI()
+        $0.setTitle(ViewUIValue.MainView.eatRiceButtonTitle, for: .normal)
+        $0.setImage(UIValue.image.eatRice, for: .normal)
+    }
+    
+    var waterEatButton = UIButton().then{
+        $0.setEatButtonUI()
+        $0.setTitle(ViewUIValue.MainView.eatWaterButtonTitle, for: .normal)
+        $0.setImage(UIValue.image.eatWater, for: .normal)
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,7 +122,12 @@ extension MainViewController: CodeBaseUI {
         damagochiArea.addSubview(statusLabel)
         
         inputArea.addSubview(changeView)
-        
+        changeView.addSubview(riceTextField)
+        changeView.addSubview(riceLineView)
+        changeView.addSubview(riceEatButton)
+        changeView.addSubview(waterTextField)
+        changeView.addSubview(waterLineView)
+        changeView.addSubview(waterEatButton)
     }
     
     func configLayout() {
@@ -162,9 +190,52 @@ extension MainViewController: CodeBaseUI {
         
         changeView.snp.makeConstraints{
             $0.height.equalTo(140)
-            $0.width.equalTo(220)
+            $0.width.equalTo(240)
             $0.top.equalToSuperview()
             $0.centerX.equalToSuperview()
+        }
+        
+        riceTextField.snp.makeConstraints{
+            $0.height.equalTo(30)
+            $0.width.equalTo(150)
+            $0.top.leading.equalToSuperview()
+        }
+        
+        riceLineView.snp.makeConstraints{
+            $0.height.equalTo(1)
+            $0.width.equalTo(riceTextField)
+            $0.top.equalTo(riceTextField.snp.bottom)
+            $0.leading.equalToSuperview()
+        }
+        
+        riceEatButton.snp.makeConstraints{
+            $0.height.equalTo(riceTextField)
+            $0.width.equalTo(80)
+            $0.leading.equalTo(riceTextField.snp.trailing).offset(10)
+            $0.top.trailing.equalToSuperview()
+        }
+        
+        waterTextField.snp.makeConstraints{
+            $0.height.equalTo(riceTextField)
+            $0.width.equalTo(riceTextField)
+            $0.top.equalTo(riceLineView.snp.bottom).offset(20)
+            $0.leading.equalToSuperview()
+        }
+        
+        waterLineView.snp.makeConstraints{
+            $0.height.equalTo(1)
+            $0.width.equalTo(waterTextField)
+            $0.top.equalTo(waterTextField.snp.bottom)
+            $0.leading.equalToSuperview()
+        }
+        
+        waterEatButton.snp.makeConstraints{
+            $0.height.equalTo(waterTextField)
+            $0.width.equalTo(riceEatButton)
+            $0.top.equalTo(riceEatButton.snp.bottom).offset(21)
+            $0.leading.equalTo(riceTextField.snp.trailing).offset(10)
+            $0.trailing.equalToSuperview()
+            
         }
         
     }
@@ -174,7 +245,7 @@ extension MainViewController: CodeBaseUI {
             navigationItem.title = userName + ViewUIValue.MainView.navigationTitle
         }
         setDefaultUI()
-        inputArea.backgroundColor = .red
-        changeView.backgroundColor = .blue
+//        inputArea.backgroundColor = .red
+//        changeView.backgroundColor = .blue
     }
 }
