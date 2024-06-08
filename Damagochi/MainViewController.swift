@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     let inputArea = UIView()
     var bubbleView = UIView()
     let changeView = UIView()
-
+    
     var bubble = UIImageView().then {
         $0.image = UIValue.image.bubble
         $0.contentMode = .scaleToFill
@@ -27,7 +27,7 @@ class MainViewController: UIViewController {
         $0.textAlignment = .center
         $0.font = .systemFont(ofSize: UIValue.fontSize.thin)
         $0.textColor = UIValue.color.font
-        $0.numberOfLines = 0
+        $0.numberOfLines = UIValue.numberOflineZero
     }
     
     var img = UIImageView().then {
@@ -39,7 +39,7 @@ class MainViewController: UIViewController {
     var coverView = UIView().then {
         $0.backgroundColor = .black
         $0.layer.opacity = UIValue.opacity.half
-        $0.layer.cornerRadius = ViewUIValue.MainView.coverViewCornerRadious
+        $0.layer.cornerRadius = ViewUIValue.mainView.coverViewCornerRadious
         $0.layer.masksToBounds = true
     }
     
@@ -68,14 +68,14 @@ class MainViewController: UIViewController {
     
     var riceTextField = UITextField().then {
         $0.backgroundColor = .clear
-        $0.placeholder = ViewUIValue.MainView.eatRicePlaceholder
+        $0.placeholder = ViewUIValue.mainView.eatRicePlaceholder
         $0.textAlignment = .center
         $0.font = .systemFont(ofSize: UIValue.fontSize.thin)
     }
     
     var waterTextField = UITextField().then {
         $0.backgroundColor = .clear
-        $0.placeholder = ViewUIValue.MainView.eatWaterPlaceholder
+        $0.placeholder = ViewUIValue.mainView.eatWaterPlaceholder
         $0.textAlignment = .center
         $0.font = .systemFont(ofSize: UIValue.fontSize.thin)
     }
@@ -89,14 +89,14 @@ class MainViewController: UIViewController {
     
     var riceEatButton = UIButton().then{
         $0.setEatButtonUI()
-        $0.setTitle(ViewUIValue.MainView.eatRiceButtonTitle, for: .normal)
+        $0.setTitle(ViewUIValue.mainView.eatRiceButtonTitle, for: .normal)
         $0.setImage(UIValue.image.eatRice, for: .normal)
         $0.addTarget(self, action: #selector(eatRice), for: .touchUpInside)
     }
     
     var waterEatButton = UIButton().then{
         $0.setEatButtonUI()
-        $0.setTitle(ViewUIValue.MainView.eatWaterButtonTitle, for: .normal)
+        $0.setTitle(ViewUIValue.mainView.eatWaterButtonTitle, for: .normal)
         $0.setImage(UIValue.image.eatWater, for: .normal)
         $0.addTarget(self, action: #selector(eatWater), for: .touchUpInside)
     }
@@ -105,6 +105,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateData(forUser: true, forDamagochi: true)
+        configNavigationBar()
         configHierarchy()
         configLayout()
         configUI()
@@ -133,10 +134,22 @@ class MainViewController: UIViewController {
         }
     }
     
+    func configNavigationBar() {
+        let barButton = UIBarButtonItem(
+            title: "",
+            style: .plain,
+            target: self,
+            action: #selector(goSettingView)
+        )
+        barButton.tintColor = UIValue.color.font
+        barButton.image = UIValue.image.personCircle
+        navigationItem.rightBarButtonItem = barButton
+    }
+    
     @objc func eatRice(_ sender: UIButton) {
         guard let data else {return}
-        var number = 1
-        if let input = Int(riceTextField.text ?? "1"), input <= 99 {
+        var number = ViewUIValue.mainView.eatMinValue
+        if let input = Int(riceTextField.text ?? "1"), input <= ViewUIValue.mainView.riceMax {
             number = input
         }
         print(#function, "DamagochiList.list: \(DamagochiList.list)")
@@ -151,8 +164,8 @@ class MainViewController: UIViewController {
     
     @objc func eatWater(_ sender: UIButton) {
         guard let data else {return}
-        var number = 1
-        if let input = Int(waterTextField.text ?? "1"), input <= 49 {
+        var number = ViewUIValue.mainView.eatMinValue
+        if let input = Int(waterTextField.text ?? "1"), input <= ViewUIValue.mainView.warterMax {
             number = input
         }
         print(#function, "DamagochiList.list: \(DamagochiList.list)")
@@ -164,6 +177,11 @@ class MainViewController: UIViewController {
         updateData(forUser: false, forDamagochi: true)
         configData()
     }
+    
+    @objc func goSettingView() {
+        pushAfterView(view: SettingViewController(), animated: true)
+    }
+    
 }
 
 extension MainViewController: CodeBaseUI {
@@ -299,7 +317,7 @@ extension MainViewController: CodeBaseUI {
     
     func configUI() {
         if let userName = user?.name {
-            navigationItem.title = userName + ViewUIValue.MainView.navigationTitle
+            navigationItem.title = userName + ViewUIValue.mainView.navigationTitle
         }
         setDefaultUI()
     }

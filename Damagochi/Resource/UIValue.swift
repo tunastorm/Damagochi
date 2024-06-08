@@ -11,10 +11,13 @@ import UIKit
 struct UIValue {
     static var damagochi = "다마고치"
     static var defaultMessage = "준비중이에요"
+    static var numberOflineZero = 0
     static var color = Color()
     static var image = Image()
     static var opacity = Opacity()
     static var fontSize = FontSize()
+    
+    private init() { }
 }
 
 struct Color {
@@ -26,11 +29,12 @@ struct Color {
 struct Image {
     let eatRice = UIImage(systemName: "leaf.circle")
     let eatWater = UIImage(systemName: "drop.circle")
-    let wrtieName = UIImage(systemName: "pencil")
+    let writeName = UIImage(systemName: "pencil")
     let changeDamagochi = UIImage(systemName: "moon.fill")
     let resetData = UIImage(systemName: "arrow.clockwise")
     let defaultDamagochi = UIImage(named: "1-1")
     let bubble = UIImage(named: "bubble")
+    let personCircle = UIImage(systemName: "person.circle")
 }
 
 struct Opacity {

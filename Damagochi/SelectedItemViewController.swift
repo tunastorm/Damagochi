@@ -15,7 +15,7 @@ class SelectedItemViewController: UIViewController {
     let backgroundView: UIView = {
         var view = UIView()
         view.backgroundColor = .black
-        view.layer.opacity = 0.5
+        view.layer.opacity = UIValue.opacity.half
         return view
     }()
     
@@ -81,7 +81,7 @@ class SelectedItemViewController: UIViewController {
         label.textColor = UIValue.color.font
         label.textAlignment = .center
         label.font = .systemFont(ofSize: UIValue.fontSize.thin)
-        label.numberOfLines = 0
+        label.numberOfLines = UIValue.numberOflineZero
         label.text = UIValue.defaultMessage
         return label
     }()
@@ -139,11 +139,13 @@ class SelectedItemViewController: UIViewController {
         coverView.layer.opacity = UIValue.opacity.clear
         let name = data.name + " \(UIValue.damagochi)"
         nameLabel.text = name
-        let desc = "저는 \(name)입니당\n"
-                 + "키는 \(data.height)Km, 몸무게는 \(data.weight)톤이에용\n"
-                 + "성격은 화끈하고 날라다닙니당~!\n"
-                 + "열심히 잘 먹고 잘 클 자신이 있습니당\n"
-                 + "\(data.name)!"
+        var desc = ""
+        var descList = ViewUIValue.selectedItemView.descriptionBase
+        let descValues = [name, String(data.height), String(data.weight), data.name]
+        for (idx, regx) in ViewUIValue.selectedItemView.descriptionRegx.enumerated() {
+            let line = descList[idx].replacingOccurrences(of:regx, with:descValues[idx])
+            desc = desc + line
+        }
         descLabel.text = desc
     }
     

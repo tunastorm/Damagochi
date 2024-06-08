@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        rollbackData()
+//        rollbackData()
         updateData(forUser: true, forDamagochi: true)
         let userState = userChecker()
         switch userState {

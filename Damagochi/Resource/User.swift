@@ -32,12 +32,15 @@ struct NowUser {
             user.name = newValue
         }
     }
+    
     static var damagochi: Int {
         get {
             return user.damagochi
         }
         set {
+           
             user.damagochi = newValue
         }
     }
+    
 }

@@ -14,4 +14,3 @@ protocol CodeBaseUI {
     
     func configUI()
 }
-

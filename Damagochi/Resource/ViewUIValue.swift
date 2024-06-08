@@ -15,7 +15,11 @@ struct ViewUIValue {
     static var selectView = SelectViewValue()
     static var selectViewCell = SelectViewCellValue()
     static var selectedItemView = SelectedItemViewVlaue()
-    static var MainView = MainViewValue()
+    static var mainView = MainViewValue()
+    static var settingView = SettingViewValue()
+    static var settingViewCell = SettingViewCellValue()
+    
+    private init() { }
 }
 
 struct SelectViewValue {
@@ -45,6 +49,11 @@ struct SelectedItemViewVlaue {
     let coverViewCornerRadious = CGFloat(57)
     let cancleButtonTitle = "취소"
     let startButtonTitle = "시작하기"
+    let descriptionBase = ["저는 (fullname)입니당\n",
+                           "키는 (height)Km, ",
+                           "몸무게는 (weight)톤이에용\n성격은 화끈하고 날라다닙니당~!\n",
+                           "열심히 잘 먹고 잘 클 자신이 있습니당!\n(name)!"]
+    let descriptionRegx = ["(fullname)", "(height)", "(weight)", "(name)"]
 }
 
 struct MainViewValue {
@@ -56,6 +65,20 @@ struct MainViewValue {
     let coverViewCornerRadious = CGFloat(110)
     let eatButtonRadious = CGFloat(5)
     let eatButtonBorderWidth = CGFloat(1)
+    let eatMinValue = 1
+    let riceMax = 99
+    let warterMax = 49
+}
+
+struct SettingViewValue {
+    let navigationTitle = "설정"
+    let numberOfRowsInSection = 3
+}
+
+struct SettingViewCellValue {
+    let changeUserNameLabel = "내 이름 설정하기"
+    let changeDamagochiLabel = "다마고치 변경하기"
+    let resetDataLabel = "데이터 초기화"
 }
 
 

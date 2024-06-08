@@ -8,5 +8,5 @@
 import UIKit
 
 struct Error {
-    static var collectionViewCellInitFailed = "init(coder:) has not been implemented"
+    static var cellInitFailed = "init(coder:) has not been implemented"
 }

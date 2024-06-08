@@ -26,7 +26,7 @@ class SelectTableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError(Error.collectionViewCellInitFailed)
+        fatalError(Error.cellInitFailed)
     }
     
     func configCell() {

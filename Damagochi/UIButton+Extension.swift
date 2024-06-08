@@ -11,9 +11,9 @@ extension UIButton {
     func setEatButtonUI() {
         self.backgroundColor = .clear
         self.layer.masksToBounds = true
-        self.layer.borderWidth = ViewUIValue.MainView.eatButtonBorderWidth
+        self.layer.borderWidth = ViewUIValue.mainView.eatButtonBorderWidth
         self.layer.borderColor = UIValue.color.border
-        self.layer.cornerRadius = ViewUIValue.MainView.eatButtonRadious
+        self.layer.cornerRadius = ViewUIValue.mainView.eatButtonRadious
         self.titleLabel?.font = .boldSystemFont(ofSize: UIValue.fontSize.thin)
         self.titleLabel?.textColor = UIValue.color.font
         self.tintColor = UIValue.color.font

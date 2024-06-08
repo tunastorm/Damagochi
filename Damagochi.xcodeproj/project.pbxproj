@@ -14,7 +14,6 @@
 		BCD9CB4A2C117ECD00FC0C57 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BCD9CB492C117ECD00FC0C57 /* .gitignore */; };
 		BCD9CB4D2C11831200FC0C57 /* ReusableIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB4C2C11831200FC0C57 /* ReusableIdentifier.swift */; };
 		BCD9CB4F2C11834400FC0C57 /* ViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB4E2C11834400FC0C57 /* ViewTransition.swift */; };
-		BCD9CB512C11838600FC0C57 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB502C11838600FC0C57 /* APIKey.swift */; };
 		BCD9CB532C1183A800FC0C57 /* CodeBaseUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB522C1183A800FC0C57 /* CodeBaseUI.swift */; };
 		BCD9CB5C2C11A2A900FC0C57 /* SelectViewTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB5B2C11A2A900FC0C57 /* SelectViewTable.swift */; };
 		BCD9CB5F2C11A37C00FC0C57 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BCD9CB5E2C11A37C00FC0C57 /* SnapKit */; };
@@ -35,6 +34,8 @@
 		BCD9CB7F2C13213900FC0C57 /* UserDefaultsManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB7E2C13213900FC0C57 /* UserDefaultsManger.swift */; };
 		BCD9CB812C13248300FC0C57 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB802C13248300FC0C57 /* State.swift */; };
 		BCD9CB832C14051C00FC0C57 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB822C14051C00FC0C57 /* UIButton+Extension.swift */; };
+		BCD9CB852C1437AE00FC0C57 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB842C1437AE00FC0C57 /* SettingViewController.swift */; };
+		BCD9CB872C14469400FC0C57 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB862C14469400FC0C57 /* SettingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +48,6 @@
 		BCD9CB492C117ECD00FC0C57 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		BCD9CB4C2C11831200FC0C57 /* ReusableIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableIdentifier.swift; sourceTree = "<group>"; };
 		BCD9CB4E2C11834400FC0C57 /* ViewTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransition.swift; sourceTree = "<group>"; };
-		BCD9CB502C11838600FC0C57 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		BCD9CB522C1183A800FC0C57 /* CodeBaseUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBaseUI.swift; sourceTree = "<group>"; };
 		BCD9CB5B2C11A2A900FC0C57 /* SelectViewTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewTable.swift; sourceTree = "<group>"; };
 		BCD9CB602C11A48300FC0C57 /* Damagochi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Damagochi.swift; sourceTree = "<group>"; };
@@ -65,6 +65,8 @@
 		BCD9CB7E2C13213900FC0C57 /* UserDefaultsManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManger.swift; sourceTree = "<group>"; };
 		BCD9CB802C13248300FC0C57 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		BCD9CB822C14051C00FC0C57 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		BCD9CB842C1437AE00FC0C57 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		BCD9CB862C14469400FC0C57 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +122,6 @@
 				BCD9CB522C1183A800FC0C57 /* CodeBaseUI.swift */,
 				BCD9CB4C2C11831200FC0C57 /* ReusableIdentifier.swift */,
 				BCD9CB4E2C11834400FC0C57 /* ViewTransition.swift */,
-				BCD9CB502C11838600FC0C57 /* APIKey.swift */,
 				BCD9CB802C13248300FC0C57 /* State.swift */,
 			);
 			path = Common;
@@ -152,6 +153,8 @@
 		BCD9CB572C1184DD00FC0C57 /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
+				BCD9CB842C1437AE00FC0C57 /* SettingViewController.swift */,
+				BCD9CB862C14469400FC0C57 /* SettingTableViewCell.swift */,
 			);
 			name = SettingView;
 			sourceTree = "<group>";
@@ -273,18 +276,19 @@
 				BCD9CB832C14051C00FC0C57 /* UIButton+Extension.swift in Sources */,
 				BCD9CB752C12DCDF00FC0C57 /* ViewUIValue.swift in Sources */,
 				BCD9CB4D2C11831200FC0C57 /* ReusableIdentifier.swift in Sources */,
+				BCD9CB872C14469400FC0C57 /* SettingTableViewCell.swift in Sources */,
 				BCD9CB812C13248300FC0C57 /* State.swift in Sources */,
 				BCD9CB362C117B7F00FC0C57 /* AppDelegate.swift in Sources */,
 				BCD9CB382C117B7F00FC0C57 /* SceneDelegate.swift in Sources */,
 				BCD9CB6C2C11BF0000FC0C57 /* SelectViewController.swift in Sources */,
 				BCD9CB5C2C11A2A900FC0C57 /* SelectViewTable.swift in Sources */,
-				BCD9CB512C11838600FC0C57 /* APIKey.swift in Sources */,
 				BCD9CB532C1183A800FC0C57 /* CodeBaseUI.swift in Sources */,
 				BCD9CB792C12E4C500FC0C57 /* SelectedItemViewController.swift in Sources */,
 				BCD9CB672C11AACC00FC0C57 /* SelectTableViewCell.swift in Sources */,
 				BCD9CB4F2C11834400FC0C57 /* ViewTransition.swift in Sources */,
 				BCD9CB612C11A48300FC0C57 /* Damagochi.swift in Sources */,
 				BCD9CB7B2C12F62100FC0C57 /* MainViewController.swift in Sources */,
+				BCD9CB852C1437AE00FC0C57 /* SettingViewController.swift in Sources */,
 				BCD9CB7F2C13213900FC0C57 /* UserDefaultsManger.swift in Sources */,
 				BCD9CB732C12D75900FC0C57 /* Error.swift in Sources */,
 				BCD9CB632C11A63500FC0C57 /* UIValue.swift in Sources */,

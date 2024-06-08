@@ -12,6 +12,10 @@ extension UIViewController {
     func setDefaultUI() {
         view.backgroundColor = UIValue.color.background
         setNavigationTitleColor(UIValue.color.font)
+        let settingTitle = ViewUIValue.settingView.navigationTitle
+        if navigationItem.backButtonTitle != settingTitle {
+            navigationItem.backButtonTitle = ""
+        }
     }
     
     func setModalBackgroundUI() {
@@ -20,6 +24,7 @@ extension UIViewController {
     }
     
     func setNavigationTitleColor(_ color: UIColor) {
+        self.navigationController?.navigationBar.tintColor = UIValue.color.font
         let textAttributes = [NSAttributedString.Key.foregroundColor: color]
         self.navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
