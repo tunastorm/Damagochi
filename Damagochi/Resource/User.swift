@@ -15,7 +15,7 @@ struct User: Codable {
 
 
 struct NowUser {
-    static var user = User(name: "대장", damagochi: 1)
+    static var user = User(name: "대장", damagochi: 0)
     static var now: User {
         get {
             return user

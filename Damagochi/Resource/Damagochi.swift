@@ -52,9 +52,24 @@ struct Damagochi: Codable {
     }
     
     mutating func calculateLevel() {
-        let newlevel = (rice/5) + (water/2)
-        if Int(newlevel) > level {
-            level = newlevel
+        if level >= 10 {
+            return
+        }
+        
+        let exp = (rice/5) + (water/2)
+        print(#function, "exp: \(exp)" )
+        var newlevel = level
+        switch exp {
+        case 20..<30: level = 2
+        case 30..<40: level = 3
+        case 40..<50: level = 4
+        case 50..<60: level = 5
+        case 60..<70: level = 6
+        case 70..<80: level = 7
+        case 80..<90: level = 8
+        case 90..<100: level = 9
+        case 100...: level = 10
+        default: return
         }
     }
     
@@ -89,5 +104,14 @@ struct DamagochiList {
         Damagochi(id: 1, name: "따끔따끔"),
         Damagochi(id: 2, name: "방실방실"),
         Damagochi(id: 3, name: "반짝반짝"),
+    ]
+}
+
+
+struct damagochiMessage {
+    static var list: [String] = [
+        "복습 아직 안 하셨다구요? 지금 잠이 오세여? userName님??",
+        "userName님! 테이블뷰 컨트롤러와 뷰컨트롤러는 어떤 차이가 있을까요??",
+        "userName님 오늘 깃허브 푸시 하셨어영?"
     ]
 }

@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        rollbackData()
+        updateData(forUser: true, forDamagochi: true)
         let userState = userChecker()
         switch userState {
         case .existDamagochi: goMainView()
@@ -24,38 +25,56 @@ class ViewController: UIViewController {
         }
     }
     
+    func updateData(forUser: Bool, forDamagochi: Bool) {
+        if let nowUser = UserDefaultsManager.nowUser, forUser {
+            NowUser.user = nowUser
+            self.user = NowUser.user
+        } else {
+            UserDefaultsManager.nowUser = NowUser.user
+            user = NowUser.user
+        }
+           
+        if let damagochiList = UserDefaultsManager.damagochiList, let user, forDamagochi {
+            DamagochiList.list = damagochiList
+        } else {
+            UserDefaultsManager.damagochiList = DamagochiList.list
+        }
+    }
+    
     func userChecker() -> UserState {
         var userState = UserState.noUser
-        if let nowUser = UserDefaultsManager.nowUser {
-            NowUser.user = nowUser
-            user = NowUser.user
-            switch nowUser.damagochi {
+        if let user {
+            switch user.damagochi {
             case 0: userState = UserState.noDamagochi
             case 1...3: userState = UserState.existDamagochi
             default: print("[ErrorPoint] \(String(describing:self))-\(#function)")
             }
-        } else {
-            UserDefaultsManager.nowUser = NowUser.user
-            guard let user = UserDefaultsManager.nowUser else { return UserState.noUser }
-            NowUser.user = user
-            userState = UserState.noDamagochi
         }
+        
         return userState
     }
     
     func goSelectView() {
         let vc = SelectViewController()
-        vc.user = self.user
+//        vc.user = self.user
         navigationPresentAfterView(view: vc, style: .fullScreen, animated: false)
     }
     
     func goMainView() {
         let vc = MainViewController()
-        if let list = UserDefaultsManager.damagochiList, let id = user?.damagochi  {
-            let damagochi = list[id-1]
-            vc.data = damagochi
+        if let id = user?.damagochi {
+            print(#function, "DamagochiList.list: \(DamagochiList.list)")
+//            vc.data = DamagochiList.list[id-1]
+//            vc.user = self.user
+            navigationPresentAfterView(view: vc, style: .fullScreen, animated: false)
         }
-        vc.user = self.user
-        navigationPresentAfterView(view: vc, style: .fullScreen, animated: false)
+    }
+    
+    // 테스트용
+    func rollbackData() {
+        let userKey = UserDefaultsManager.userKey
+        let dataKey = UserDefaultsManager.damagochiKey
+        UserDefaultsManager.removeValue(userKey)
+        UserDefaultsManager.removeValue(dataKey)
     }
 }

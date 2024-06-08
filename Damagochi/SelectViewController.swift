@@ -27,11 +27,26 @@ class SelectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateData(forUser: true, forDamagochi: true)
         damagochiListChecker()
         configBasicSetting()
         configHierarchy()
         configLayout()
         configUI()
+    }
+    
+    func updateData(forUser: Bool, forDamagochi: Bool) {
+        if let nowUser = UserDefaultsManager.nowUser, forUser {
+            NowUser.user = nowUser
+            self.user = NowUser.user
+        }
+           
+        if let damagochiList = UserDefaultsManager.damagochiList, let user, forDamagochi {
+            DamagochiList.list = damagochiList
+            self.damagochiList = DamagochiList.list
+        }
+        print(#function, "user: \(user)")
+        print(#function, "damagochiList: \(damagochiList)")
     }
     
     func configBasicSetting() {
@@ -43,15 +58,10 @@ class SelectViewController: UIViewController {
     
     func damagochiListChecker() -> DamagochiState {
         var damagochiState = DamagochiState.noList
-        if let list = UserDefaultsManager.damagochiList {
-            damagochiState = DamagochiState.existList
-            DamagochiList.list = list
-            damagochiList = DamagochiList.list
-        } else {
-            UserDefaultsManager.damagochiList = DamagochiList.list
-            damagochiList =  UserDefaultsManager.damagochiList
+        if let list = damagochiList {
             damagochiState = DamagochiState.existList
         }
+        print(#function, damagochiState)
         return damagochiState
     }
 }
@@ -136,7 +146,6 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
         let vc = SelectedItemViewController()
         
         if let list = damagochiList, indexPath.row < list.count {
-            vc.user = user
             vc.data = list[indexPath.row]
         }
         navigationPresentAfterView(view: vc, style: .overFullScreen, animated: true)

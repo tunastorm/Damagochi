@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     let inputArea = UIView()
     var bubbleView = UIView()
     let changeView = UIView()
-    
+
     var bubble = UIImageView().then {
         $0.image = UIValue.image.bubble
         $0.contentMode = .scaleToFill
@@ -91,20 +91,78 @@ class MainViewController: UIViewController {
         $0.setEatButtonUI()
         $0.setTitle(ViewUIValue.MainView.eatRiceButtonTitle, for: .normal)
         $0.setImage(UIValue.image.eatRice, for: .normal)
+        $0.addTarget(self, action: #selector(eatRice), for: .touchUpInside)
     }
     
     var waterEatButton = UIButton().then{
         $0.setEatButtonUI()
         $0.setTitle(ViewUIValue.MainView.eatWaterButtonTitle, for: .normal)
         $0.setImage(UIValue.image.eatWater, for: .normal)
+        $0.addTarget(self, action: #selector(eatWater), for: .touchUpInside)
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateData(forUser: true, forDamagochi: true)
         configHierarchy()
         configLayout()
         configUI()
+        configData()
+    }
+
+    func updateData(forUser: Bool, forDamagochi: Bool) {
+        if let nowUser = UserDefaultsManager.nowUser, forUser {
+            NowUser.user = nowUser
+            self.user = NowUser.user
+        }
+           
+        if let damagochiList = UserDefaultsManager.damagochiList, let user, forDamagochi {
+            DamagochiList.list = damagochiList
+            self.data = DamagochiList.list[user.damagochi-1]
+        }
+    }
+    
+    func configData() {
+        if let user, let data {
+            bubbleLabel.text = damagochiMessage.list.randomElement()?.replacingOccurrences(of: "userName", with: user.name)
+            img.image = UIImage(named: data.image)
+            coverView.backgroundColor = .clear
+            nameLabel.text = data.name + " \(UIValue.damagochi)"
+            statusLabel.text = "LV\(data.level)﹒밥알 \(data.rice)개﹒물방울 \(data.water)개"
+        }
+    }
+    
+    @objc func eatRice(_ sender: UIButton) {
+        guard let data else {return}
+        var number = 1
+        if let input = Int(riceTextField.text ?? "1"), input <= 99 {
+            number = input
+        }
+        print(#function, "DamagochiList.list: \(DamagochiList.list)")
+        let newRice = DamagochiList.list[data.id-1].rice + number
+        print(#function, "newRice: \(newRice)")
+        DamagochiList.list[data.id-1].rice = newRice
+        UserDefaultsManager.damagochiList = DamagochiList.list
+
+        updateData(forUser: false, forDamagochi: true)
+        configData()
+    }
+    
+    @objc func eatWater(_ sender: UIButton) {
+        guard let data else {return}
+        var number = 1
+        if let input = Int(waterTextField.text ?? "1"), input <= 49 {
+            number = input
+        }
+        print(#function, "DamagochiList.list: \(DamagochiList.list)")
+        let newWater = DamagochiList.list[data.id-1].water + number
+        print(#function, "newWater: \(newWater)")
+        DamagochiList.list[data.id-1].water = newWater
+        UserDefaultsManager.damagochiList = DamagochiList.list
+        
+        updateData(forUser: false, forDamagochi: true)
+        configData()
     }
 }
 
@@ -237,7 +295,6 @@ extension MainViewController: CodeBaseUI {
             $0.trailing.equalToSuperview()
             
         }
-        
     }
     
     func configUI() {
@@ -245,7 +302,5 @@ extension MainViewController: CodeBaseUI {
             navigationItem.title = userName + ViewUIValue.MainView.navigationTitle
         }
         setDefaultUI()
-//        inputArea.backgroundColor = .red
-//        changeView.backgroundColor = .blue
     }
 }

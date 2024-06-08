@@ -114,10 +114,23 @@ class SelectedItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateData(forUser: true, forDamagochi: false)
         configHierarchy()
         configLayout()
         configUI()
         configCell()
+    }
+    
+    func updateData(forUser: Bool, forDamagochi: Bool) {
+        if let nowUser = UserDefaultsManager.nowUser, forUser {
+            NowUser.user = nowUser
+            self.user = NowUser.user
+        }
+           
+        if let damagochiList = UserDefaultsManager.damagochiList, let user, forDamagochi {
+            DamagochiList.list = damagochiList
+            self.data = DamagochiList.list[user.damagochi-1]
+        }
     }
     
     func configCell() {
@@ -140,11 +153,11 @@ class SelectedItemViewController: UIViewController {
     
     @objc func goMainView() {
         guard let id = data?.id else { return }
-        NowUser.user.damagochi = id
+        if user?.damagochi != id {
+            NowUser.user.damagochi = id
+        }
         UserDefaultsManager.nowUser = NowUser.user
         let vc = MainViewController()
-        vc.user = user
-        vc.data = data
         navigationPresentAfterView(view: vc, style: .fullScreen, animated: false)
     }
 }
