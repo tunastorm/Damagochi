@@ -92,7 +92,10 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SettingViewController: CellTransitionDelegate {
     func turnBackRootView() {
-        print(#function)
+        guard let viewStacks = self.navigationController?.viewControllers else {return}
+        for view in viewStacks {
+            view.popoverPresentationController
+        }
         navigationPresentAfterView(view: ViewController(), style: .fullScreen, animated: false)
     }
     

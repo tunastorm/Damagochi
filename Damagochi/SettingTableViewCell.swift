@@ -126,11 +126,8 @@ class SettingTableViewCell: UITableViewCell {
             print(#function, user)
             print(#function, tamagochi)
         }
-        
-        delegate?.popToRootViewFromCell(animated: true)
+        delegate?.turnBackRootView()
     }
-    
-    
 }
 
 

@@ -133,8 +133,8 @@ class MainViewController: UIViewController {
             NowTamagochi.tamagochi = nowTamagochi
             self.data = NowTamagochi.tamagochi
         }
-        print(#function, NowUser.name)
-        print(#function, NowTamagochi.tamagochi)
+        print(self.self, #function, NowUser.name)
+        print(self.self, NowTamagochi.tamagochi)
     }
     
     func configBaseSetting() {

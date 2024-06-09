@@ -20,7 +20,7 @@ protocol ViewTransition {
    
    func popToBeforeView(_ view: UIViewController, animated: Bool)
     
-    func popToRootView(animated: Bool)
+   func popToRootView(animated: Bool)
    
 //   func popEvent
     

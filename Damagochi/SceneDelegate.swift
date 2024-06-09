@@ -31,6 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         case .noUser: print("[ErrorPoint] \(String(describing:self))-\(#function)")
         }
         
+        print(self.self, #function, rootView)
         let navigationController = UINavigationController(rootViewController: rootView)
         window?.rootViewController = navigationController// sb entrypoint
         window?.makeKeyAndVisible() // show the rootViewController to display
@@ -44,16 +45,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
+        
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
+     
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
+       
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
     }
@@ -78,11 +82,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             UserDefaultsManager.nowTamagochi = NowTamagochi.tamagochi
         }
-        print(#function, NowUser.user)
-        print(#function, NowTamagochi.tamagochi)
+        print("[SceneDelegate]",#function, NowUser.user)
+        print("[SceneDelegate]",#function, NowTamagochi.tamagochi)
     }
     
     func userChecker() -> UserState {
+        print("SceneDelegate", #function, user)
         var userState = UserState.noUser
         if let user {
             switch user.tamagochi {
