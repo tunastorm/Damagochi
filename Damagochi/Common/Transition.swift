@@ -17,6 +17,10 @@ protocol ViewTransition {
    func navigationPresentAfterView(view: UIViewController, style: UIModalPresentationStyle, animated: Bool)
     
    func popBeforeView(animated: Bool)
+   
+   func popToNewView(_ view: UIViewController, animated: Bool)
+   
+//   func popEvent
     
 }
 
@@ -43,11 +47,17 @@ extension UIViewController: ViewTransition {
     func popBeforeView(animated: Bool) {
         navigationController?.popViewController(animated: animated)
     }
+    
+    func popToNewView(_ view: UIViewController, animated: Bool) {
+        navigationController?.popToViewController(view, animated: animated)
+    }
 }
 
 protocol CellTransitionDelegate {
-
+    
     func turnBackRootView()
+    
+    func pushAfterViewType<T: UIViewController>(type: T.Type, animated: Bool)
     
     func pushChangeSelectView()
     

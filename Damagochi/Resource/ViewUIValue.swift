@@ -15,6 +15,7 @@ struct ViewUIValue {
     static var mainView = MainViewValue()
     static var settingView = SettingViewValue()
     static var settingViewCell = SettingViewCellValue()
+    static var changeNameView = ChangeNameViewValue()
     
     private init() { }
 }
@@ -81,6 +82,13 @@ struct SettingViewCellValue {
     let resetAlertDelete = "삭제"
     let resetDataLabel = "데이터 초기화"
     let resetDataMessage = "정말 다시 처음부터 시작하실 건가용?"
+}
+
+struct ChangeNameViewValue {
+    let navigtaionTitle = "님 이름 변경하기"
+    let saveButtonTitle = "저장"
+    let newNameMinLength = 2
+    let newNameMaxLength = 6
 }
 
 

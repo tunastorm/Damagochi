@@ -100,7 +100,14 @@ class MainViewController: UIViewController {
         $0.setImage(UIValue.image.eatWater, for: .normal)
         $0.addTarget(self, action: #selector(eatWater), for: .touchUpInside)
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        print(#function, "\(NowUser.name)")
+        updateData(forUser: true, forTamagochi: true)
+        if let userName = user?.name {
+            navigationItem.title = userName + ViewUIValue.mainView.navigationTitle
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,7 +118,7 @@ class MainViewController: UIViewController {
         configUI()
         configData()
     }
-
+    
     func updateData(forUser: Bool, forTamagochi: Bool) {
         if let nowUser = UserDefaultsManager.nowUser, forUser {
             NowUser.user = nowUser
@@ -122,6 +129,7 @@ class MainViewController: UIViewController {
             NowTamagochi.tamagochi = nowTamagochi
             self.data = NowTamagochi.tamagochi
         }
+        print(#function, NowUser.name)
         print(#function, NowTamagochi.tamagochi)
     }
     

@@ -166,7 +166,6 @@ class SelectedItemViewController: UIViewController {
             startButton.setTitle(ViewUIValue.selectedItemView.changeButtonTitle,
                                  for: .normal)
         }
-        
     }
     
     @objc func turnBack() {

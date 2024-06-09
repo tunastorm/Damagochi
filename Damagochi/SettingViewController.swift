@@ -8,6 +8,8 @@
 import UIKit
 
 class SettingViewController: UIViewController {
+     
+    var delegate: ViewTransition?
     
     var user: User?
     var data: Tamagochi?
@@ -87,6 +89,15 @@ extension SettingViewController: CellTransitionDelegate {
     func turnBackRootView() {
         print(#function)
         navigationPresentAfterView(view: ViewController(), style: .fullScreen, animated: false)
+    }
+    
+    func pushAfterViewType<T: UIViewController>(type: T.Type, animated: Bool) {
+        switch type {
+        case is ChangeNameViewController.Type: 
+            pushAfterView(view: ChangeNameViewController(), animated: animated)
+        default: return
+        }
+        print(#function, type)
     }
     
     func pushChangeSelectView() {

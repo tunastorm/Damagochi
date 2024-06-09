@@ -86,7 +86,7 @@ class SettingTableViewCell: UITableViewCell {
     }
     
     @objc func goChangeNameView() {
-        
+        delegate?.pushAfterViewType(type: ChangeNameViewController.self, animated: true)
     }
     
     @objc func goChangeTamagochiView() {
