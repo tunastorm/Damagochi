@@ -42,14 +42,6 @@ class SelectedItemViewController: UIViewController {
         $0.contentMode = .scaleToFill
     }
     
-    var coverView = UIView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.backgroundColor = .black
-        $0.layer.opacity = UIValue.opacity.half
-        $0.layer.cornerRadius = ViewUIValue.selectedItemView.coverViewCornerRadious
-        $0.layer.masksToBounds = true
-    }
-    
     var labelView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = UIValue.color.background
@@ -148,7 +140,7 @@ class SelectedItemViewController: UIViewController {
             imgLevel = 9
         }
         img.image = UIImage(named: "\(id)-\(imgLevel)")
-        coverView.layer.opacity = UIValue.opacity.clear
+       
         name = NowTamagochi.nameList[nameIndex]
         guard let name else {return}
         let fullName = name + " \(UIValue.Tamagochi)"
@@ -197,7 +189,6 @@ extension SelectedItemViewController: CodeBaseUI {
         modalView.addSubview(buttonArea)
         
         TamagochiArea.addSubview(img)
-        TamagochiArea.addSubview(coverView)
         TamagochiArea.addSubview(labelView)
         labelView.addSubview(nameLabel)
         
@@ -241,13 +232,6 @@ extension SelectedItemViewController: CodeBaseUI {
             $0.size.equalTo(120)
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().inset(50)
-        }
-        
-        coverView.snp.makeConstraints{
-            $0.size.equalTo(120)
-            $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().inset(50)
-            $0.bottom.equalTo(img.snp.bottom)
         }
         
         labelView.snp.makeConstraints {

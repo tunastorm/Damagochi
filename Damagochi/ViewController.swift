@@ -56,12 +56,14 @@ class ViewController: UIViewController {
     }
     
     func goSelectView() {
-        navigationPresentAfterView(view: SelectViewController(), 
+//        pushAfterView(view: SelectViewController(), animated: false)
+        navigationPresentAfterView(view: SelectViewController(),
                                    style: .fullScreen,
                                    animated: false)
     }
     
     func goMainView() {
+        pushAfterView(view: MainViewController(), animated: false)
         navigationPresentAfterView(view: MainViewController(),
                                    style: .fullScreen,
                                    animated: false)

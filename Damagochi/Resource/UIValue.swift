@@ -32,7 +32,7 @@ struct Image {
     let writeName = UIImage(systemName: "pencil")
     let changeTamagochi = UIImage(systemName: "moon.fill")
     let resetData = UIImage(systemName: "arrow.clockwise")
-    let defaultTamagochi = UIImage(named: "1-1")
+    let defaultTamagochi = UIImage(named: "noImage")
     let bubble = UIImage(named: "bubble")
     let personCircle = UIImage(systemName: "person.circle")
     let chevronRight = UIImage(systemName: "chevron.right")

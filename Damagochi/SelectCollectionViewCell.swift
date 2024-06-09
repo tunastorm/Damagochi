@@ -19,14 +19,6 @@ class SelectCollectionViewCell: UICollectionViewCell {
         $0.contentMode = .scaleToFill
     }
     
-    var coverView = UIView().then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.backgroundColor = .black
-        $0.layer.opacity = UIValue.opacity.half
-        $0.layer.cornerRadius = ViewUIValue.selectViewCell.coverViewCornerRadius
-        $0.layer.masksToBounds = true
-    }
-    
     var labelView = UIView().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.backgroundColor = UIValue.color.background
@@ -47,26 +39,26 @@ class SelectCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.cellSetting()
+        configHierarchy()
+        configLayout()
+        configUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError(Error.cellInitFailed)
     }
-    
-    func cellSetting() {
-        self.backgroundColor = .gray
+}
+
+
+extension SelectCollectionViewCell: CodeBaseUI {
+    func configHierarchy() {
         self.addSubview(img)
-        self.addSubview(coverView)
         self.addSubview(labelView)
         labelView.addSubview(label)
-        
+    }
+    
+    func configLayout() {
         img.snp.makeConstraints {
-            $0.leading.top.trailing.equalTo(0)
-            $0.bottom.equalTo(-30)
-        }
-        
-        coverView.snp.makeConstraints{
             $0.leading.top.trailing.equalTo(0)
             $0.bottom.equalTo(-30)
         }
@@ -78,5 +70,9 @@ class SelectCollectionViewCell: UICollectionViewCell {
         label.snp.makeConstraints{
             $0.edges.equalToSuperview().inset(5)
         }
+    }
+    
+    func configUI() {
+        self.backgroundColor = .gray
     }
 }

@@ -120,7 +120,6 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
             }
             print(#function, "\(itemIndex+1)-\(imgLevel)")
             cell.img.image = UIImage(named: "\(itemIndex+1)-\(imgLevel)")
-            cell.coverView.backgroundColor = .clear
             cell.label.text = "\(tamagochiList[itemIndex]) " + UIValue.Tamagochi
         }
             

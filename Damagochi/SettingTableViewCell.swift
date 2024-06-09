@@ -164,5 +164,6 @@ extension SettingTableViewCell: CodeBaseUI {
     
     func configUI() {
         self.backgroundColor = .clear
+        self.selectionStyle = .none
     }
 }
