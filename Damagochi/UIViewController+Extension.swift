@@ -12,10 +12,7 @@ extension UIViewController {
     func setDefaultUI() {
         view.backgroundColor = UIValue.color.background
         setNavigationTitleColor(UIValue.color.font)
-        let settingTitle = ViewUIValue.settingView.navigationTitle
-        if navigationItem.backButtonTitle != settingTitle {
-            navigationItem.backButtonTitle = ""
-        }
+        let mainTitle = ViewUIValue.mainView.navigationTitle
     }
     
     func setModalBackgroundUI() {

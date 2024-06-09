@@ -14,6 +14,7 @@ class SelectedItemViewController: UIViewController {
     var nameIndex: Int?
     var id: Int?
     var name: String?
+    var isChangeView = false
     
     let backgroundView: UIView = {
         var view = UIView()
@@ -103,7 +104,7 @@ class SelectedItemViewController: UIViewController {
     
     let startButton = {
         var button = UIButton()
-        let title = ViewUIValue.selectedItemView.startButtonTitle
+        var title = ViewUIValue.selectedItemView.startButtonTitle
         let titleColor = UIValue.color.font
         button.setTitle(title, for: .normal)
         button.setTitleColor(titleColor, for: .normal)
@@ -141,7 +142,12 @@ class SelectedItemViewController: UIViewController {
         id = nameIndex + 1
         guard let id else {return}
         print(#function,"| id: \(id) | ", "data.level: \(data.level)")
-        img.image = UIImage(named: "\(id)-\(data.level)")
+        
+        var imgLevel = data.level
+        if imgLevel >= 10 {
+            imgLevel = 9
+        }
+        img.image = UIImage(named: "\(id)-\(imgLevel)")
         coverView.layer.opacity = UIValue.opacity.clear
         name = NowTamagochi.nameList[nameIndex]
         guard let name else {return}
@@ -155,6 +161,12 @@ class SelectedItemViewController: UIViewController {
             desc = desc + line
         }
         descLabel.text = desc
+        
+        if isChangeView {
+            startButton.setTitle(ViewUIValue.selectedItemView.changeButtonTitle,
+                                 for: .normal)
+        }
+        
     }
     
     @objc func turnBack() {
@@ -166,7 +178,7 @@ class SelectedItemViewController: UIViewController {
             NowUser.user.tamagochi = id
             NowTamagochi.tamagochi.setId(id)
             NowTamagochi.tamagochi.setName(name)
-            NowTamagochi.tamagochi.setImage()
+            NowTamagochi.tamagochi.setImage(self.isChangeView)
             print(#function, NowUser.user)
             print(#function, NowTamagochi.tamagochi)
         }

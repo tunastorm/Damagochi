@@ -25,11 +25,11 @@ class SelectViewController: UIViewController {
     var user: User?
     var tamagochiList = NowTamagochi.nameList
     var data: Tamagochi?
+    var isChangeView = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateData(forUser: true, forTamagochi: true)
-//        tamagochiChecker()
         configBasicSetting()
         configHierarchy()
         configLayout()
@@ -48,6 +48,7 @@ class SelectViewController: UIViewController {
         }
         print(#function, "user: \(user)")
         print(#function, "data: \(data)")
+        print(#function, "NowTamagochi: \(NowTamagochi.nameList)")
     }
     
     func configBasicSetting() {
@@ -80,7 +81,11 @@ extension SelectViewController: CodeBaseUI {
     
     func configUI() {
         setDefaultUI()
-        navigationItem.title = ViewUIValue.selectView.navigationTitle
+        var navigationTitle = ViewUIValue.selectView.navigationTitle
+        if isChangeView {
+            navigationTitle = ViewUIValue.selectView.changeNavigationTitle
+        }
+        navigationItem.title = navigationTitle
     }
 }
 
@@ -109,7 +114,12 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
         cell.backgroundColor = .clear
 
         if itemIndex < tamagochiList.count, let data {
-            cell.img.image = UIImage(named: "\(itemIndex+1)-\(data.level)")
+            var imgLevel = data.level
+            if imgLevel >= 10 {
+                imgLevel = 9
+            }
+            print(#function, "\(itemIndex+1)-\(imgLevel)")
+            cell.img.image = UIImage(named: "\(itemIndex+1)-\(imgLevel)")
             cell.coverView.backgroundColor = .clear
             cell.label.text = "\(tamagochiList[itemIndex]) " + UIValue.Tamagochi
         }
@@ -144,6 +154,7 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SelectedItemViewController()
+        vc.isChangeView = self.isChangeView
         
         if indexPath.row < tamagochiList.count {
             vc.nameIndex = indexPath.row

@@ -21,6 +21,7 @@ struct ViewUIValue {
 
 struct SelectViewValue {
     let navigationTitle = UIValue.Tamagochi + " 선택하기"
+    let changeNavigationTitle = UIValue.Tamagochi + " 변경하기"
     let defaultItemSize = 20
     let layoutMinLineSpacing = CGFloat(0)
     let sectionInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
@@ -46,6 +47,7 @@ struct SelectedItemViewVlaue {
     let coverViewCornerRadious = CGFloat(57)
     let cancleButtonTitle = "취소"
     let startButtonTitle = "시작하기"
+    let changeButtonTitle = "변경하기"
     let descriptionBase = ["저는 (fullname)입니당\n",
                            "키는 (height)Km, ",
                            "몸무게는 (weight)톤이에용\n성격은 화끈하고 날라다닙니당~!\n",

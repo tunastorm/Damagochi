@@ -341,6 +341,7 @@ extension MainViewController: CodeBaseUI {
         if let userName = user?.name {
             navigationItem.title = userName + ViewUIValue.mainView.navigationTitle
         }
+        navigationItem.backButtonTitle = ""
         setDefaultUI()
     }
 }

@@ -89,6 +89,12 @@ extension SettingViewController: CellTransitionDelegate {
         navigationPresentAfterView(view: ViewController(), style: .fullScreen, animated: false)
     }
     
+    func pushChangeSelectView() {
+        let vc = SelectViewController()
+        vc.isChangeView = true
+        pushAfterView(view: vc, animated: true)
+    }
+    
     func presentAlert(_ alert: UIAlertController, animated: Bool) {
         present(alert, animated: animated)
     }

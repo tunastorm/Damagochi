@@ -90,7 +90,7 @@ class SettingTableViewCell: UITableViewCell {
     }
     
     @objc func goChangeTamagochiView() {
-        
+        delegate?.pushChangeSelectView()
     }
     
     @objc func resetDataAlert() {
@@ -111,8 +111,6 @@ class SettingTableViewCell: UITableViewCell {
         alert.addAction(delete)
         
         delegate?.presentAlert(alert, animated: false)
-        
-        
     }
     
     func resetData() {

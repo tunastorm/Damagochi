@@ -49,6 +49,8 @@ protocol CellTransitionDelegate {
 
     func turnBackRootView()
     
+    func pushChangeSelectView()
+    
     func presentAlert(_ alert: UIAlertController, animated: Bool)
     
 }

@@ -17,7 +17,7 @@ struct Tamagochi: Codable {
     
     var level: Int = 1 {
         didSet {
-            setImage()
+            setImage(false)
         }
     }
     
@@ -71,11 +71,14 @@ struct Tamagochi: Codable {
         }
     }
     
-    mutating func setImage() {
-        if level >= 10 {
+    mutating func setImage(_ isChangeView: Bool) {
+        var imgLevel = level
+        if level >= 10 && !isChangeView {
             return
+        } else if level >= 10 && isChangeView {
+            imgLevel = 9
         }
-        self.image = "\(id)-\(level)"
+        self.image = "\(id)-\(imgLevel)"
     }
     
     mutating func setHeightWeight() {
