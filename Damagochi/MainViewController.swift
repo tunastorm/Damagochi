@@ -112,6 +112,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateData(forUser: true, forTamagochi: true)
+        configBaseSetting()
         configNavigationBar()
         configHierarchy()
         configLayout()
@@ -131,6 +132,11 @@ class MainViewController: UIViewController {
         }
         print(#function, NowUser.name)
         print(#function, NowTamagochi.tamagochi)
+    }
+    
+    func configBaseSetting() {
+        riceTextField.delegate = self
+        waterTextField.delegate = self
     }
     
     func configData() {
@@ -211,6 +217,15 @@ class MainViewController: UIViewController {
         pushAfterView(view: SettingViewController(), animated: true)
     }
     
+}
+
+extension MainViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == riceTextField || textField == waterTextField {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
 }
 
 
@@ -346,10 +361,10 @@ extension MainViewController: CodeBaseUI {
     }
     
     func configUI() {
+        setDefaultUI()
         if let userName = user?.name {
             navigationItem.title = userName + ViewUIValue.mainView.navigationTitle
         }
         navigationItem.backButtonTitle = ""
-        setDefaultUI()
     }
 }

@@ -12,7 +12,9 @@ extension UIViewController {
     func setDefaultUI() {
         view.backgroundColor = UIValue.color.background
         setNavigationTitleColor(UIValue.color.font)
-        let mainTitle = ViewUIValue.mainView.navigationTitle
+//        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.barTintColor = UIValue.color.font
     }
     
     func setModalBackgroundUI() {

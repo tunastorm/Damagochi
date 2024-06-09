@@ -23,11 +23,16 @@ class ChangeNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configBaseSetting()
         configNavigationBar()
         configHierarchy()
         configLayout()
         configUI()
         
+    }
+    
+    func configBaseSetting() {
+        newNameTextField.delegate = self
     }
     
     func configNavigationBar() {
@@ -63,6 +68,15 @@ class ChangeNameViewController: UIViewController {
 //                navigationPresentAfterView(view: mainView, style: .fullScreen, animated: false)
             }
         }
+    }
+}
+
+extension ChangeNameViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == newNameTextField {
+            textField.resignFirstResponder()
+        }
+        return true
     }
 }
 
