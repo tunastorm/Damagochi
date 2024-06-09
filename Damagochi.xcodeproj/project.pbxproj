@@ -35,6 +35,7 @@
 		BCD9CB852C1437AE00FC0C57 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB842C1437AE00FC0C57 /* SettingViewController.swift */; };
 		BCD9CB872C14469400FC0C57 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB862C14469400FC0C57 /* SettingTableViewCell.swift */; };
 		BCD9CB892C14CD2700FC0C57 /* DefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB882C14CD2700FC0C57 /* DefaultData.swift */; };
+		BCD9CB8C2C15532B00FC0C57 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD9CB8B2C15532B00FC0C57 /* ChangeNameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		BCD9CB842C1437AE00FC0C57 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		BCD9CB862C14469400FC0C57 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		BCD9CB882C14CD2700FC0C57 /* DefaultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultData.swift; sourceTree = "<group>"; };
+		BCD9CB8B2C15532B00FC0C57 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			children = (
 				BCD9CB842C1437AE00FC0C57 /* SettingViewController.swift */,
 				BCD9CB862C14469400FC0C57 /* SettingTableViewCell.swift */,
+				BCD9CB8B2C15532B00FC0C57 /* ChangeNameViewController.swift */,
 			);
 			name = SettingView;
 			sourceTree = "<group>";
@@ -175,15 +178,23 @@
 		BCD9CB5A2C11865700FC0C57 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				BCD9CB602C11A48300FC0C57 /* Tamagochi.swift */,
+				BCD9CB8A2C14CE5000FC0C57 /* Data */,
 				BCD9CB622C11A63500FC0C57 /* UIValue.swift */,
 				BCD9CB722C12D75900FC0C57 /* Error.swift */,
 				BCD9CB742C12DCDF00FC0C57 /* ViewUIValue.swift */,
-				BCD9CB7C2C12F6B800FC0C57 /* User.swift */,
 				BCD9CB7E2C13213900FC0C57 /* UserDefaultsManger.swift */,
-				BCD9CB882C14CD2700FC0C57 /* DefaultData.swift */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		BCD9CB8A2C14CE5000FC0C57 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BCD9CB602C11A48300FC0C57 /* Tamagochi.swift */,
+				BCD9CB7C2C12F6B800FC0C57 /* User.swift */,
+				BCD9CB882C14CD2700FC0C57 /* DefaultData.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +295,7 @@
 				BCD9CB4F2C11834400FC0C57 /* Transition.swift in Sources */,
 				BCD9CB612C11A48300FC0C57 /* Tamagochi.swift in Sources */,
 				BCD9CB7B2C12F62100FC0C57 /* MainViewController.swift in Sources */,
+				BCD9CB8C2C15532B00FC0C57 /* ChangeNameViewController.swift in Sources */,
 				BCD9CB852C1437AE00FC0C57 /* SettingViewController.swift in Sources */,
 				BCD9CB7F2C13213900FC0C57 /* UserDefaultsManger.swift in Sources */,
 				BCD9CB732C12D75900FC0C57 /* Error.swift in Sources */,

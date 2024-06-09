@@ -24,7 +24,7 @@ protocol ViewTransition {
 // some -> Opaque Type, any -> Existential Type
 // WWDC
 
-extension UIViewController: ViewTransition{
+extension UIViewController: ViewTransition {
 
     func pushAfterView(view: UIViewController, animated: Bool) {
         self.navigationController?.pushViewController(view, animated: animated)
@@ -46,8 +46,10 @@ extension UIViewController: ViewTransition{
 }
 
 protocol CellTransitionDelegate {
-     
+
     func turnBackRootView()
+    
+    func presentAlert(_ alert: UIAlertController, animated: Bool)
     
 }
 

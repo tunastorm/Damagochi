@@ -75,7 +75,10 @@ struct SettingViewValue {
 struct SettingViewCellValue {
     let changeUserNameLabel = "내 이름 설정하기"
     let changeTamagochiLabel = "다마고치 변경하기"
+    let resetAlertCancle = "취소"
+    let resetAlertDelete = "삭제"
     let resetDataLabel = "데이터 초기화"
+    let resetDataMessage = "정말 다시 처음부터 시작하실 건가용?"
 }
 
 

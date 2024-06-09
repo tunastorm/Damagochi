@@ -88,6 +88,10 @@ extension SettingViewController: CellTransitionDelegate {
         print(#function)
         navigationPresentAfterView(view: ViewController(), style: .fullScreen, animated: false)
     }
+    
+    func presentAlert(_ alert: UIAlertController, animated: Bool) {
+        present(alert, animated: animated)
+    }
 }
 
 

@@ -81,7 +81,7 @@ class SettingTableViewCell: UITableViewCell {
     func configResetData() {
         settingImage.image = UIValue.image.resetData
         settingLabel.text = ViewUIValue.settingViewCell.resetDataLabel
-        goButton.addTarget(self, action: #selector(resetData), for: .touchUpInside)
+        goButton.addTarget(self, action: #selector(resetDataAlert), for: .touchUpInside)
         
     }
     
@@ -93,8 +93,29 @@ class SettingTableViewCell: UITableViewCell {
         
     }
     
-    @objc func resetData() {
-        print("hihihihi")
+    @objc func resetDataAlert() {
+        let alert = UIAlertController(title: ViewUIValue.settingViewCell.resetDataLabel,
+                                      message: ViewUIValue.settingViewCell.resetDataMessage,
+                                      preferredStyle: .alert)
+        // 2.
+        let delete = UIAlertAction(title: ViewUIValue.settingViewCell.resetAlertDelete,
+                                   style: .destructive,
+                                   handler: {_  in self.resetData()})
+        
+        let cancle = UIAlertAction(title: ViewUIValue.settingViewCell.resetAlertCancle,
+                                   style: .cancel)
+        
+        // 3. addAction 순서대로 좌->우, 상->하로 정렬
+        // 하지만 UIAlertAction의 style 파라미터에 정의된 스타일에 지정된 위치가 우선한다.
+        alert.addAction(cancle)
+        alert.addAction(delete)
+        
+        delegate?.presentAlert(alert, animated: false)
+        
+        
+    }
+    
+    func resetData() {
         let userKey = UserDefaultsManager.userKey
         let dataKey = UserDefaultsManager.tamagochiKey
         NowUser.user = DefaultData.user
@@ -107,8 +128,11 @@ class SettingTableViewCell: UITableViewCell {
             print(#function, user)
             print(#function, tamagochi)
         }
+        
         delegate?.turnBackRootView()
     }
+    
+    
 }
 
 extension SettingTableViewCell: CodeBaseUI {
