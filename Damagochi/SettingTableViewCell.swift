@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
 class SettingTableViewCell: UITableViewCell {
     
@@ -16,26 +18,26 @@ class SettingTableViewCell: UITableViewCell {
         $0.contentMode = .scaleToFill
     }
     
-    let settingLabel = UILabel().then{
+    let settingLabel = UILabel().then {
         $0.font = .systemFont(ofSize: UIValue.fontSize.thin)
         $0.textColor = UIValue.color.font
         $0.textAlignment = .left
     }
-    
-    var configuration = UIButton.Configuration.plain()
    
-    let goButton = UIButton(type:.system).then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
+    let goButton = UIButton().then {
 //        $0.configuration = .plain()
 //        $0.configuration?.imagePlacement = .trailing
         $0.semanticContentAttribute = .forceRightToLeft
         $0.titleLabel?.font = .boldSystemFont(ofSize: UIValue.fontSize.thin)
-        $0.titleLabel?.textAlignment = .right
+//        $0.titleLabel?.textAlignment
         $0.tintColor = .systemGray3
         $0.setTitleColor(UIValue.color.font, for: .normal)
         $0.setImage(UIValue.image.chevronRight, for: .normal)
         $0.contentMode = .scaleToFill
-        $0.backgroundColor = .blue
+        
+        $0.contentHorizontalAlignment = .leading
+        $0.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+//        $0.backgroundColor = .blue
     }
     
 
@@ -63,10 +65,8 @@ class SettingTableViewCell: UITableViewCell {
     func configChangeUserName() {
         settingImage.image = UIValue.image.writeName
         settingLabel.text = ViewUIValue.settingViewCell.changeUserNameLabel
-        goButton.setTitle(NowUser.user.name, for: .normal)
-        goButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        goButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0,
-                                                     bottom: 0, right: 10)
+        
+        goButton.setAttributedTitle(NSAttributedString(string: NowUser.name), for: .normal)
         goButton.addTarget(self, action: #selector(goChangeNameView), for: .touchUpInside)
     }
     
@@ -127,11 +127,12 @@ class SettingTableViewCell: UITableViewCell {
             print(#function, tamagochi)
         }
         
-        delegate?.turnBackRootView()
+        delegate?.popToRootViewFromCell(animated: true)
     }
     
     
 }
+
 
 extension SettingTableViewCell: CodeBaseUI {
     func configHierarchy() {
@@ -155,9 +156,9 @@ extension SettingTableViewCell: CodeBaseUI {
         }
         
         goButton.snp.makeConstraints{
-            $0.height.equalTo(20)
+            $0.height.equalTo(40)
             $0.width.equalTo(100)
-            $0.trailing.equalToSuperview().inset(10)
+            $0.trailing.equalToSuperview().inset(24)
             $0.centerY.equalToSuperview()
         }
     }

@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import SnapKit
+import Then
+
 
 class MainViewController: UIViewController {
     
@@ -83,11 +86,11 @@ class MainViewController: UIViewController {
     var riceLineView = UIView().then {
         $0.backgroundColor = UIValue.color.font
     }
-    var waterLineView = UIView().then{
+    var waterLineView = UIView().then {
         $0.backgroundColor = UIValue.color.font
     }
     
-    var riceEatButton = UIButton().then{
+    var riceEatButton = UIButton().then {
         $0.setEatButtonUI()
         $0.setTitle(ViewUIValue.mainView.eatRiceButtonTitle, for: .normal)
         $0.setImage(UIValue.image.eatRice, for: .normal)
@@ -104,6 +107,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         print(#function, "\(NowUser.name)")
         updateData(forUser: true, forTamagochi: true)
+        configData()
         if let userName = user?.name {
             navigationItem.title = userName + ViewUIValue.mainView.navigationTitle
         }
@@ -111,13 +115,12 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateData(forUser: true, forTamagochi: true)
+//        updateData(forUser: true, forTamagochi: true)
         configBaseSetting()
         configNavigationBar()
         configHierarchy()
         configLayout()
         configUI()
-        configData()
     }
     
     func updateData(forUser: Bool, forTamagochi: Bool) {

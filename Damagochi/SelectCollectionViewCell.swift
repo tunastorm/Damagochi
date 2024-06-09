@@ -67,6 +67,7 @@ extension SelectCollectionViewCell: CodeBaseUI {
             $0.leading.bottom.trailing.equalTo(0)
             $0.top.equalTo(img.snp.bottom).offset(5)
         }
+        
         label.snp.makeConstraints{
             $0.edges.equalToSuperview().inset(5)
         }

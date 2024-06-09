@@ -11,21 +11,30 @@ extension UIViewController {
     
     func setDefaultUI() {
         view.backgroundColor = UIValue.color.background
-        setNavigationTitleColor(UIValue.color.font)
-//        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.barTintColor = UIValue.color.font
+        self.navigationController?.navigationBar.tintColor = UIValue.color.font
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIValue.color.font]
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIValue.color.background
+        appearance.shadowImage = nil
+        appearance.titleTextAttributes = textAttributes
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
+    
+    
+    private func colorToImage(_ color: UIColor) -> UIImage {
+      let size: CGSize = CGSize(width: UIScreen.main.bounds.width, height: 1)
+      let image: UIImage = UIGraphicsImageRenderer(size: size).image { context in
+      color.setFill()
+      context.fill(CGRect(origin: .zero, size: size))
+      }
+    return image
+    }
+    
     
     func setModalBackgroundUI() {
         view.backgroundColor = .black
         view.layer.opacity = UIValue.opacity.half
-    }
-    
-    func setNavigationTitleColor(_ color: UIColor) {
-        self.navigationController?.navigationBar.tintColor = UIValue.color.font
-        let textAttributes = [NSAttributedString.Key.foregroundColor: color]
-        self.navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     func saveData(forUser: Bool, forTamagochi: Bool) {

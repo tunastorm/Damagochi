@@ -13,8 +13,7 @@ class ViewController: UIViewController {
     
     var user: User?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
         updateData(forUser: true, forTamagochi: true)
         let userState = userChecker()
         switch userState {
@@ -22,6 +21,11 @@ class ViewController: UIViewController {
         case .noTamagochi: goSelectView()
         case .noUser: print("[ErrorPoint] \(String(describing:self))-\(#function)")
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        updateData(forUser: true, forTamagochi: true)
     }
     
     func updateData(forUser: Bool, forTamagochi: Bool) {

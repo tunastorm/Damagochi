@@ -11,6 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    var user: User?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -19,9 +20,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: scene)
-
-        let mainViewController = ViewController()
-        let navigationController = UINavigationController(rootViewController: mainViewController)
+        var rootView = UIViewController()
+        
+        updateData(forUser: true, forTamagochi: true)
+    
+        let userState = userChecker()
+        switch userState {
+        case .existTamagochi: rootView = MainViewController()
+        case .noTamagochi: rootView = SelectViewController()
+        case .noUser: print("[ErrorPoint] \(String(describing:self))-\(#function)")
+        }
+        
+        let navigationController = UINavigationController(rootViewController: rootView)
         window?.rootViewController = navigationController// sb entrypoint
         window?.makeKeyAndVisible() // show the rootViewController to display
     }
@@ -53,7 +63,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
+    
+    func updateData(forUser: Bool, forTamagochi: Bool) {
+        if let nowUser = UserDefaultsManager.nowUser, forUser {
+            NowUser.user = nowUser
+            self.user = NowUser.user
+        } else {
+            UserDefaultsManager.nowUser = NowUser.user
+            user = NowUser.user
+        }
+           
+        if let nowTamagochi = UserDefaultsManager.nowTamagochi, let user, forTamagochi {
+            NowTamagochi.tamagochi = nowTamagochi
+        } else {
+            UserDefaultsManager.nowTamagochi = NowTamagochi.tamagochi
+        }
+        print(#function, NowUser.user)
+        print(#function, NowTamagochi.tamagochi)
+    }
+    
+    func userChecker() -> UserState {
+        var userState = UserState.noUser
+        if let user {
+            switch user.tamagochi {
+            case 0: userState = UserState.noTamagochi
+            case 1...3: userState = UserState.existTamagochi
+            default: print("[ErrorPoint] \(String(describing:self))-\(#function)")
+            }
+        }
+        
+        return userState
+    }
 
 }
 

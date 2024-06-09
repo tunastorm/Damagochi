@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
 class SettingViewController: UIViewController {
      
@@ -14,7 +16,9 @@ class SettingViewController: UIViewController {
     var user: User?
     var data: Tamagochi?
     
-    let tableView = UITableView()
+    let tableView = UITableView().then {
+        $0.separatorInset = .zero
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +79,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         let rowIndex = indexPath.row
         
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as! SettingTableViewCell
+   
         
         if let user {
             cell.delegate = self
@@ -108,6 +113,10 @@ extension SettingViewController: CellTransitionDelegate {
     
     func presentAlert(_ alert: UIAlertController, animated: Bool) {
         present(alert, animated: animated)
+    }
+    
+    func popToRootViewFromCell(animated: Bool) {
+        popToRootView(animated: animated)
     }
 }
 

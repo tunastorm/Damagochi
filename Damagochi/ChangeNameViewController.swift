@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
 class ChangeNameViewController: UIViewController {
 //    
@@ -63,7 +65,7 @@ class ChangeNameViewController: UIViewController {
         for view in viewStacks {
             if let mainView = view as? MainViewController {
 //                delegate = MainView
-                popToNewView(mainView, animated: true)
+                popToBeforeView(mainView, animated: true)
 //                dismiss(animated: false, completion: )
 //                navigationPresentAfterView(view: mainView, style: .fullScreen, animated: false)
             }
