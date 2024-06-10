@@ -158,6 +158,6 @@ extension SelectViewController: UICollectionViewDelegateFlowLayout, UICollection
         if indexPath.row < tamagochiList.count {
             vc.nameIndex = indexPath.row
         }
-        navigationPresentAfterView(view: vc, style: .fullScreen, animated: false)
+        navigationPresentAfterView(view: vc, style: .overFullScreen, animated: false)
     }
 }

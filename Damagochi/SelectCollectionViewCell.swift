@@ -31,6 +31,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
     var label = UILabel().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textAlignment = .center
+        $0.numberOfLines = 0
         let fontSize = CGFloat(UIValue.fontSize.thin)
         $0.font = .boldSystemFont(ofSize: fontSize)
         $0.textColor = UIValue.color.font
